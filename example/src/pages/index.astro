@@ -1,0 +1,73 @@
+---
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Command Palette Example</title>
+  </head>
+  <body>
+    <h1>Astro Command Palette</h1>
+    <h2>Press <kbd>Command + K</kbd> to start.</h2>
+  </body>
+</html>
+
+<style>
+  @media (prefers-color-scheme: light) {
+    :root {
+      --text: #151c26;
+      --gray: #676b73;
+      --background: #f0f4fc;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #f0f4fc;
+      --gray: #acb4c2;
+      --background: #151c26;
+    }
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--background);
+    font-family: monospace;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  h2 {
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--gray);
+  }
+
+  kbd {
+    font-size: 1rem;
+    border-radius: 0.4rem;
+    padding-block: 0.3rem;
+    margin-inline: 0.2rem;
+    padding-inline: 0.6rem;
+    font-family: monospace;
+    border: 1.5px solid var(--gray);
+  }
+</style>

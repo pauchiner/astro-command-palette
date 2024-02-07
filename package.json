@@ -1,0 +1,36 @@
+{
+  "name": "astro-command-palette",
+  "description": "A minimal command palette for astro with no dependencies",
+  "author": "Pau García Chiner",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "keywords": [
+    "astro-component"
+  ],
+  "scripts": {
+    "lint": "eslint src",
+    "format": "prettier -w src",
+    "dev": "cd example && astro dev"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6.21.0",
+    "@typescript-eslint/parser": "6.21.0",
+    "astro": "4.3.4",
+    "eslint": "8.56.0",
+    "eslint-plugin-astro": "0.31.4",
+    "prettier": "3.2.5",
+    "prettier-plugin-astro": "0.13.0",
+    "typescript": "5.3.3"
+  },
+  "peerDependencies": {
+    "astro": "^3.0.0 || ^4.0.0"
+  }
+}
