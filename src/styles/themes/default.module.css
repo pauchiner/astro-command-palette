@@ -1,0 +1,68 @@
+/*-------Colors-------*/
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #151c26;
+    --backdrop: #f0f4fc30;
+    --placeholder: #c0c3ca;
+    --background: #f0f4fc;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f0f4fc;
+    --backdrop: #151c2630;
+    --placeholder: #7e8288;
+    --background: #151c26;
+  }
+}
+
+/*-------Styles-------*/
+
+.palette {
+  color: var(--text);
+  border-radius: 0.5rem;
+  background: var(--background);
+  box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
+  animation: appear 150ms ease-out;
+}
+
+.input {
+  font-size: 1rem;
+  color: var(--text);
+  border-radius: 0.5rem;
+  font-family: monospace;
+  caret-color: var(--text);
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--placeholder);
+}
+
+.backdrop {
+  background: var(--backdrop);
+}
+
+/*-----Animations-----*/
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  70% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
