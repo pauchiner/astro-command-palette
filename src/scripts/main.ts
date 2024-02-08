@@ -6,7 +6,7 @@ const commandPalette = container.querySelector(
   '#command-palette'
 ) as HTMLDivElement;
 
-const commandPaletteinput = container.querySelector(
+const commandPaletteInput = container.querySelector(
   '#command-palette-input'
 ) as HTMLInputElement;
 
@@ -23,12 +23,12 @@ const openCommandPalette = (): void => {
     container.setAttribute('data-visible', 'true');
   });
 
-  commandPaletteinput.focus();
+  commandPaletteInput.focus();
 };
 
 const closeCommandPalette = (): void => {
   setTimeout(() => container.setAttribute('data-visible', 'false'), 150);
-
+  commandPaletteInput.value = '';
   container.style.display = 'none';
 };
 
