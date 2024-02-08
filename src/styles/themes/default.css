@@ -4,6 +4,7 @@
   :root {
     --text: #151c26;
     --backdrop: #f0f4fc30;
+    --selected: #d8dce3;
     --placeholder: #c0c3ca;
     --background: #f0f4fc;
   }
@@ -12,20 +13,28 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #f0f4fc;
+    --selected: #212731;
+    --background: #151c26;
     --backdrop: #151c2630;
     --placeholder: #7e8288;
-    --background: #151c26;
   }
 }
 
 /*-------Styles-------*/
+
+#command-palette-container * {
+  transition:
+    color,
+    background-color,
+    border-color 150ms ease-out;
+}
 
 #command-palette {
   color: var(--text);
   margin-inline: 10px;
   border-radius: 0.5rem;
   background: var(--background);
-  animation: appear 150ms ease-out;
+  animation: fade 150ms ease-out;
   box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
 }
@@ -34,7 +43,7 @@
   overflow: hidden;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  scrollbar-color: var(--placeholder) var(--background);
+  scrollbar-color: var(--selected) var(--background);
 }
 
 #command-palette-input {
@@ -66,43 +75,26 @@
   font-size: 0.9rem;
   color: var(--text);
   background: var(--background);
+  font-family: system-ui, sans-serif;
   transition: background 150ms ease-out;
 }
 
 .command-palette-action[data-selected='true'] {
-  background: var(--placeholder);
+  background: var(--selected);
 }
 
 /*-----Animations-----*/
 
-@keyframes appear {
-  0% {
+@keyframes fade {
+  from {
     opacity: 0;
-    transform: scale(0.9);
-  }
-
-  70% {
     transform: scale(0.95);
+    transform: translateY(5px);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes disappear {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  70% {
-    transform: scale(0.95);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(0.9);
+    transform: translateY(0);
   }
 }
