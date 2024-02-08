@@ -1,0 +1,114 @@
+/*-------Colors-------*/
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #151c26;
+    --backdrop: #f0f4fc30;
+    --placeholder: #c0c3ca;
+    --background: #f0f4fc;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f0f4fc;
+    --backdrop: #151c2630;
+    --placeholder: #7e8288;
+    --background: #151c26;
+  }
+}
+
+/*-------Styles-------*/
+
+#command-palette {
+  color: var(--text);
+  border-radius: 0.5rem;
+  background: var(--background);
+  animation: appear 150ms ease-out;
+  box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
+}
+
+#command-palette-items {
+  overflow: hidden;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  scrollbar-color: var(--placeholder) var(--background);
+}
+
+#command-palette-input {
+  border: none;
+  font-size: 1rem;
+  background: none;
+  color: var(--text);
+  font-family: monospace;
+  caret-color: var(--text);
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom: 1px solid var(--placeholder);
+}
+
+#command-palette-input:focus-visible {
+  outline: none;
+}
+
+#command-palette-input::placeholder {
+  color: var(--placeholder);
+}
+
+#command-palette-container {
+  background: var(--backdrop);
+}
+
+.command-palette-action {
+  font-size: 0.9rem;
+  color: black;
+}
+
+.command-palette-action[data-selected='true'] {
+  background: var(--placeholder);
+}
+
+.command-palette-action-link {
+  color: var(--text);
+}
+
+.command-palette-action-button {
+  color: var(--text);
+  background: none;
+  border: none;
+}
+
+/*-----Animations-----*/
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  70% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  70% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
