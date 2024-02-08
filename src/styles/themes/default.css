@@ -22,6 +22,7 @@
 
 #command-palette {
   color: var(--text);
+  margin-inline: 10px;
   border-radius: 0.5rem;
   background: var(--background);
   animation: appear 150ms ease-out;
@@ -61,22 +62,15 @@
 }
 
 .command-palette-action {
+  border: none;
   font-size: 0.9rem;
-  color: black;
+  color: var(--text);
+  background: var(--background);
+  transition: background 150ms ease-out;
 }
 
 .command-palette-action[data-selected='true'] {
   background: var(--placeholder);
-}
-
-.command-palette-action-link {
-  color: var(--text);
-}
-
-.command-palette-action-button {
-  color: var(--text);
-  background: none;
-  border: none;
 }
 
 /*-----Animations-----*/
