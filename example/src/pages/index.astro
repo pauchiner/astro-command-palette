@@ -11,7 +11,7 @@ import CommandPalette, {CommandPaletteLinkAction} from '~';
   </head>
   <body>
     <h1>Astro Command Palette</h1>
-    <h2>Press <kbd>Command + K</kbd> to start.</h2>
+    <h2>Press <kbd>Command</kbd> + <kbd>K</kbd> to start.</h2>
     <CommandPalette>
       <CommandPaletteLinkAction
         selected
@@ -91,6 +91,7 @@ import CommandPalette, {CommandPaletteLinkAction} from '~';
     margin-inline: 0.2rem;
     padding-inline: 0.6rem;
     font-family: monospace;
-    border: 1.5px solid var(--gray);
+    background: var(--text);
+    color: var(--background);
   }
 </style>
