@@ -1,8 +1,5 @@
 ---
-import CommandPalette, {
-  CommandPaletteLinkAction,
-  CommandPaletteButtonAction
-} from '~';
+import CommandPalette, {CommandPaletteAction} from '~';
 ---
 
 <html lang="en">
@@ -16,12 +13,10 @@ import CommandPalette, {
     <h1>Astro Command Palette</h1>
     <h2>Press <kbd>Command</kbd> + <kbd>K</kbd> to start.</h2>
     <CommandPalette>
-      <CommandPaletteLinkAction id="pauchiner" href="https://pauchiner.es">
+      <CommandPaletteAction id="pauchiner" href="https://pauchiner.es">
         My Webpage
-      </CommandPaletteLinkAction>
-      <CommandPaletteButtonAction id="popup">
-        Show popup
-      </CommandPaletteButtonAction>
+      </CommandPaletteAction>
+      <CommandPaletteAction id="popup"> Show popup </CommandPaletteAction>
     </CommandPalette>
   </body>
 </html>

@@ -10,17 +10,12 @@ export interface CommandPaletteItem {
 
 interface CommandPaletteAction extends CommandPaletteItem {
   selected?: boolean;
+  href?: string;
 }
 
 interface CommandPaletteGroup extends CommandPaletteItem {
   actions: Action[];
 }
-
-export interface CommandPaletteLinkAction extends CommandPaletteAction {
-  href: string;
-}
-
-export interface CommandPaletteButtonAction extends CommandPaletteAction { }
 
 export interface Action {
   id: string;
