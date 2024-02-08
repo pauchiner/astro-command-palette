@@ -1,0 +1,22 @@
+---
+interface Props {
+  placeholder?: string;
+  maxLength?: number;
+}
+
+const {placeholder = 'Search anything here', maxLength = 60} = Astro.props;
+---
+
+<input
+  id="command-palette-input"
+  placeholder={placeholder}
+  maxlength={maxLength}
+/>
+
+<style>
+  #command-palette-input {
+    width: calc(100% - 2rem);
+    padding-inline: 1rem;
+    height: 4rem;
+  }
+</style>
