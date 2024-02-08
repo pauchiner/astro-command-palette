@@ -2,32 +2,34 @@ const container = document.querySelector(
   '#command-palette-container'
 ) as HTMLDivElement;
 
+const commandPalette = container.querySelector(
+  '#command-palette'
+) as HTMLDivElement;
+
+const commandPaletteinput = container.querySelector(
+  '#command-palette-input'
+) as HTMLInputElement;
+
 const commandPaletteItems = [
   ...container.querySelectorAll('.command-palette-action')
 ] as HTMLDivElement[];
 
 const openCommandPalette = (): void => {
-  const container = document.querySelector(
-    '#command-palette-container'
-  ) as HTMLElement;
-
-  const input = container.querySelector(
-    '#command-palette-input'
-  ) as HTMLInputElement;
-
-  container.style.display = 'flex';
   container.setAttribute('data-selected', '0');
-  setTimeout(() => container.setAttribute('data-visible', 'true'), 150);
+  container.style.display = 'flex';
   updateCurrentItem();
-  input.focus();
+
+  commandPalette.addEventListener('animationend', () => {
+    container.setAttribute('data-visible', 'true');
+  });
+
+  commandPaletteinput.focus();
 };
 
 const closeCommandPalette = (): void => {
-  const container = document.querySelector(
-    '#command-palette-container'
-  ) as HTMLElement;
-  container.style.display = 'none';
   setTimeout(() => container.setAttribute('data-visible', 'false'), 150);
+
+  container.style.display = 'none';
 };
 
 const updateCurrentItem = (): void => {
