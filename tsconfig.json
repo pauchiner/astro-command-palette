@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "plugins": [{ {"name": "@astrojs/ts-plugin"} }],
+    "plugins": [{"name": "@astrojs/ts-plugin"}],
     "jsx": "preserve"
   }
 }
