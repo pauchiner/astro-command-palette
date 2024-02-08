@@ -9,7 +9,8 @@ export interface CommandPaletteItem {
 }
 
 interface CommandPaletteAction extends CommandPaletteItem {
-  icon?: ChildNode;
+  icon?: Element;
+  selected?: boolean;
 }
 
 interface CommandPaletteGroup extends CommandPaletteItem {
