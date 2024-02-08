@@ -3,6 +3,8 @@
 @media (prefers-color-scheme: light) {
   :root {
     --text: #151c26;
+    --footer: #f6f8fd;
+    --keybinds: #e4e8ef;
     --backdrop: #f0f4fc30;
     --selected: #d8dce3;
     --placeholder: #c0c3ca;
@@ -13,21 +15,15 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #f0f4fc;
+    --footer: #131922;
     --selected: #212731;
-    --background: #151c26;
+    --background: #131922;
     --backdrop: #151c2630;
     --placeholder: #7e8288;
   }
 }
 
 /*-------Styles-------*/
-
-#command-palette-container * {
-  transition:
-    color,
-    background-color,
-    border-color 150ms ease-out;
-}
 
 #command-palette {
   color: var(--text);
@@ -39,10 +35,19 @@
   -webkit-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
 }
 
+#command-palette-container * {
+  transition:
+    color,
+    background-color,
+    border-color 150ms ease-out;
+}
+
+#command-palette-container {
+  background: var(--backdrop);
+}
+
 #command-palette-items {
   overflow: hidden;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
   scrollbar-color: var(--selected) var(--background);
 }
 
@@ -66,8 +71,15 @@
   color: var(--placeholder);
 }
 
-#command-palette-container {
-  background: var(--backdrop);
+#command-palette-footer {
+  background: var(--footer);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+
+  & kbd {
+    border-radius: 0.25rem;
+    background: var(--keybinds);
+  }
 }
 
 .command-palette-action {
