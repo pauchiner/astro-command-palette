@@ -11,7 +11,9 @@ const {id, href, selected = false} = Astro.props;
   target="_blank"
   class="command-palette-action"
   data-selected={selected.toString()}>
-  <slot />
+  <span>
+    <slot />
+  </span>
 </a>
 
 <style>
