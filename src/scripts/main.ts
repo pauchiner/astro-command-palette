@@ -105,4 +105,26 @@ const handleKeyboard = (event: KeyboardEvent): void => {
   }
 };
 
+const handleMouse = (event: MouseEvent): void => {
+  const isVisible = container.getAttribute('data-visible') === 'true';
+  if (!isVisible) return;
+
+  const target = event.target as HTMLElement;
+
+  commandPaletteItems.forEach(({id}, index) => {
+    if (target.id === id) {
+      container.setAttribute('data-selected', index.toString());
+      updateCurrentItem();
+    }
+  });
+};
+
+const handleMouseExit = (event: MouseEvent): void => {
+  const target = event.target as HTMLElement;
+
+  if (target.id === 'command-palette-container') closeCommandPalette();
+};
+
 document.addEventListener('keydown', handleKeyboard);
+document.addEventListener('mouseover', handleMouse);
+document.addEventListener('click', handleMouseExit);
