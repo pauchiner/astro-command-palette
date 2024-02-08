@@ -20,6 +20,9 @@ export interface CommandPaletteLinkAction extends CommandPaletteAction {
   href: string;
 }
 
-export interface CommandPaletteButtonAction extends CommandPaletteAction {
-  onClick: () => void;
+export interface CommandPaletteButtonAction extends CommandPaletteAction { }
+
+export interface Action {
+  id: string;
+  action: () => void;
 }
