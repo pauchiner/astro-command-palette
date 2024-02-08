@@ -9,7 +9,6 @@ export interface CommandPaletteItem {
 }
 
 interface CommandPaletteAction extends CommandPaletteItem {
-  icon?: Element;
   selected?: boolean;
 }
 
