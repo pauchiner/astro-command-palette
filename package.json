@@ -21,6 +21,7 @@
     "dev": "cd example && astro dev"
   },
   "devDependencies": {
+    "@astrojs/ts-plugin": "1.4.0",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "astro": "4.3.4",
