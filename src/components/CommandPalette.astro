@@ -5,11 +5,10 @@ import '../styles/themes/default.css';
 const props = Astro.props;
 ---
 
-<div id="command-palette-container">
+<div data-visible="false" data-selected="0" id="command-palette-container">
   <div id="command-palette">
     <input
       id="command-palette-input"
-      autofocus
       placeholder={props.placeholder ?? 'Search anything here'}
     />
     <div id="command-palette-items">
@@ -18,13 +17,15 @@ const props = Astro.props;
   </div>
 </div>
 
+<script src="../scripts/main.ts"></script>
+
 <style>
   #command-palette-container {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     position: fixed;
     z-index: 999999;
     align-items: center;
