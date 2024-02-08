@@ -1,6 +1,6 @@
 ---
 import type {CommandPalette as Props} from '../types';
-import LinkAction from './LinkAction.astro';
+import Action from './Action.astro';
 import '../styles/themes/default.css';
 
 const props = Astro.props;
@@ -14,15 +14,15 @@ const props = Astro.props;
     />
     <div id="command-palette-items">
       <slot>
-        <LinkAction
+        <Action
           id="Github"
           href="https://github.com/pauchiner/astro-command-palette/blob/main/README.md"
-          >See Documentation</LinkAction
+          >See Documentation</Action
         >
-        <LinkAction
+        <Action
           id="Github"
           href="https://github.com/pauchiner/astro-command-palette"
-          >Rate On Github</LinkAction
+          >Rate On Github</Action
         >
       </slot>
     </div>
