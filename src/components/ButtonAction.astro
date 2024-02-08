@@ -1,0 +1,10 @@
+---
+import type {CommandPaletteButtonAction as Props} from '../types';
+import theme from '../styles/themes/default.module.css';
+
+const props = Astro.props;
+---
+
+<div id={props.id} class={theme.action}>
+  <button class={theme.buttonAction} tabindex="0">{props.children}</button>
+</div>

@@ -1,0 +1,11 @@
+---
+import type {CommandPaletteLinkAction as Props} from '../types';
+import theme from '../styles/themes/default.module.css';
+
+const props = Astro.props;
+---
+
+<div id={props.id} class={theme.action}>
+  <a class={theme.linkAction} href={props.href} tabindex="0">{props.children}</a
+  >
+</div>

@@ -1,5 +1,8 @@
 ---
 import theme from '../styles/themes/default.module.css';
+import type {CommandPalette as Props} from '../types';
+
+const props = Astro.props;
 ---
 
 <div id="command-palette-container" class={theme.backdrop}>
@@ -7,9 +10,12 @@ import theme from '../styles/themes/default.module.css';
     <input
       id="command-palette-input"
       autofocus
-      placeholder="Search any action"
+      placeholder={props.placeholder ?? 'Search anything here'}
       class={theme.input}
     />
+    <div id="command-palette-items">
+      <slot />
+    </div>
   </div>
 </div>
 
