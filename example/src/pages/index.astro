@@ -1,5 +1,8 @@
 ---
-import CommandPalette, {CommandPaletteLinkAction} from '~';
+import CommandPalette, {
+  CommandPaletteLinkAction,
+  CommandPaletteButtonAction
+} from '~';
 ---
 
 <html lang="en">
@@ -13,27 +16,12 @@ import CommandPalette, {CommandPaletteLinkAction} from '~';
     <h1>Astro Command Palette</h1>
     <h2>Press <kbd>Command</kbd> + <kbd>K</kbd> to start.</h2>
     <CommandPalette>
-      <CommandPaletteLinkAction
-        selected
-        id="pauchiner"
-        href="https://pauchiner.es">
-        My Webpage
-      </CommandPaletteLinkAction>
       <CommandPaletteLinkAction id="pauchiner" href="https://pauchiner.es">
         My Webpage
       </CommandPaletteLinkAction>
-      <CommandPaletteLinkAction id="pauchiner" href="https://pauchiner.es">
-        My Webpage
-      </CommandPaletteLinkAction>
-      <CommandPaletteLinkAction id="pauchiner" href="https://pauchiner.es">
-        My Webpage
-      </CommandPaletteLinkAction>
-      <CommandPaletteLinkAction id="pauchiner" href="https://pauchiner.es">
-        My Webpage
-      </CommandPaletteLinkAction>
-      <CommandPaletteLinkAction id="pauchiner" href="https://pauchiner.es">
-        My Webpage
-      </CommandPaletteLinkAction>
+      <CommandPaletteButtonAction id="popup">
+        Show popup
+      </CommandPaletteButtonAction>
     </CommandPalette>
   </body>
 </html>
@@ -95,3 +83,14 @@ import CommandPalette, {CommandPaletteLinkAction} from '~';
     color: var(--background);
   }
 </style>
+
+<script>
+  import useCommandPaletteActions from '~/src/scripts/useAction';
+
+  useCommandPaletteActions([
+    {
+      id: 'popup',
+      action: () => window.alert('Moauuuuu')
+    }
+  ]);
+</script>
