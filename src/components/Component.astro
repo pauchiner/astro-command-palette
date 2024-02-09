@@ -1,9 +1,7 @@
 ---
 import '../styles/themes/default.css';
-import Action from './Action.astro';
 import Footer from './Footer.astro';
 import Input from './Input.astro';
-
 ---
 
 <div data-visible="false" data-selected="0" id="command-palette-container">
@@ -11,20 +9,7 @@ import Input from './Input.astro';
     <slot name="input">
       <Input />
     </slot>
-    <div id="command-palette-items">
-      <slot>
-        <Action
-          id="Github"
-          href="https://github.com/pauchiner/astro-command-palette/blob/main/README.md"
-          >See Documentation</Action
-        >
-        <Action
-          id="Github"
-          href="https://github.com/pauchiner/astro-command-palette"
-          >Rate On Github</Action
-        >
-      </slot>
-    </div>
+    <div id="command-palette-items"></div>
     <slot name="footer">
       <Footer />
     </slot>
@@ -49,8 +34,10 @@ import Input from './Input.astro';
 
   #command-palette-items {
     width: 100%;
+    display: flex;
     overflow-y: auto;
     max-height: 12rem;
+    flex-direction: column;
   }
 
   #command-palette {
