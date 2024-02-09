@@ -3,21 +3,23 @@ export interface CommandPalette {
   children: CommandPaletteItem[];
 }
 
-export interface CommandPaletteItem {
+type CommandPaletteItemType = 'action' | 'group';
+
+interface CommandPaletteBaseItem {
   id: string;
-  children: string;
+  name: string;
+  type: CommandPaletteItemType;
 }
 
-interface CommandPaletteAction extends CommandPaletteItem {
+export type CommandPaletteAction = CommandPaletteBaseItem & {
+  type: 'action';
   selected?: boolean;
-  href?: string;
-}
+  handler: () => void;
+};
 
-interface CommandPaletteGroup extends CommandPaletteItem {
-  actions: Action[];
-}
+export type CommandPaletteGroup = CommandPaletteBaseItem & {
+  type: 'group';
+  actions: CommandPaletteAction[];
+};
 
-export interface Action {
-  id: string;
-  action: () => void;
-}
+export type CommandPaletteItem = CommandPaletteAction | CommandPaletteGroup;
