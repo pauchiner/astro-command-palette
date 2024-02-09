@@ -1,5 +1,5 @@
 ---
-import CommandPalette, {CommandPaletteAction} from '~';
+import CommandPalette from '~';
 ---
 
 <html lang="en">
@@ -12,12 +12,7 @@ import CommandPalette, {CommandPaletteAction} from '~';
   <body>
     <h1>Astro Command Palette</h1>
     <h2>Press <kbd>Command</kbd> + <kbd>K</kbd> to start.</h2>
-    <CommandPalette>
-      <CommandPaletteAction id="pauchiner" href="https://pauchiner.es">
-        My Webpage
-      </CommandPaletteAction>
-      <CommandPaletteAction id="popup"> Show popup </CommandPaletteAction>
-    </CommandPalette>
+    <CommandPalette />
   </body>
 </html>
 
@@ -80,12 +75,27 @@ import CommandPalette, {CommandPaletteAction} from '~';
 </style>
 
 <script>
-  import useCommandPaletteActions from '~/src/scripts/useAction';
+  import {createCommandPaletteItems, openUrl} from '~';
 
-  useCommandPaletteActions([
+  createCommandPaletteItems([
     {
-      id: 'popup',
-      action: () => window.alert('Moauuuuu')
+      id: 'github',
+      type: 'action',
+      name: 'Rate On Github',
+      handler: () =>
+        openUrl('https://github.com/pauchiner/astro-command-palette')
+    },
+    {
+      id: 'author',
+      type: 'action',
+      name: 'Author Website',
+      handler: () => openUrl('https://pauchiner.es')
+    },
+    {
+      id: 'test',
+      type: 'action',
+      name: 'Open Alert',
+      handler: () => alert('Hello 😃')
     }
   ]);
 </script>
