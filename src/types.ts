@@ -1,10 +1,10 @@
 type CommandPaletteItemType = 'action' | 'group';
 
-interface CommandPaletteBaseItem {
+type CommandPaletteBaseItem = {
   id: string;
   name: string;
   type: CommandPaletteItemType;
-}
+};
 
 export type CommandPaletteAction = CommandPaletteBaseItem & {
   type: 'action';
