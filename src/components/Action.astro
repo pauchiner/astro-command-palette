@@ -1,20 +1,18 @@
 ---
 import type {CommandPaletteAction as Props} from '../types';
 
-const {id, href, selected = false} = Astro.props;
+const {id, selected = false} = Astro.props;
 ---
 
-<a 
+<button
   id={id} 
-  href={href}
   tabindex="0" 
-  target="_blank"
   class="command-palette-action"
   data-selected={selected.toString()}>
   <span>
     <slot />
   </span>
-</a>
+</button>
 
 <style>
   a {
