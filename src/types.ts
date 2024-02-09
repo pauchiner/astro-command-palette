@@ -1,8 +1,3 @@
-export interface CommandPalette {
-  placeholder?: string;
-  children: CommandPaletteItem[];
-}
-
 type CommandPaletteItemType = 'action' | 'group';
 
 interface CommandPaletteBaseItem {
