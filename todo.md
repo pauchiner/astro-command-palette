@@ -1,8 +1,9 @@
 # To-Do
 - [x] Keyboard Support
-- [ ] Mouse support
+- [x] Mouse support
+- [ ] Groups & Pages
 - [ ] Search bar
-- [ ] Footer
+- [x] Footer
 - [ ] Tests
 - [ ] Icons
 - [ ] Custom keybindings

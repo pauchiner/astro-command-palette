@@ -1,17 +1,15 @@
 ---
-import type {CommandPalette as Props} from '../types';
 import '../styles/themes/default.css';
 import Action from './Action.astro';
 import Footer from './Footer.astro';
 import Input from './Input.astro';
 
-const props = Astro.props;
 ---
 
 <div data-visible="false" data-selected="0" id="command-palette-container">
   <div id="command-palette">
     <slot name="input">
-      <Input placeholder={props.placeholder} />
+      <Input />
     </slot>
     <div id="command-palette-items">
       <slot>
