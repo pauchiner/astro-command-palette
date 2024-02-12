@@ -1,8 +1,9 @@
-import type {CommandPaletteItem} from '../types';
-import Action from '../components/Action.ts';
+import type {CommandPaletteAction, CommandPaletteItem} from '../types';
+import createActionItem from '../components/Action';
 
-export const openUrl = (url: string, target = '_blank') => {
-  window.open(url, target);
+const dispatchActionItem = (item: CommandPaletteAction) => {
+  const action = document.querySelector(`#${item.id}`) as HTMLButtonElement;
+  action.addEventListener('click', item.handler);
 };
 
 const createCommandPaletteItems = (items: CommandPaletteItem[]) => {
@@ -13,8 +14,9 @@ const createCommandPaletteItems = (items: CommandPaletteItem[]) => {
   items.forEach(item => {
     if (item.type === 'group') return;
 
-    const component = new Action(item).createComponent();
-    listToAttach.appendChild(component);
+    const component = createActionItem(item);
+    listToAttach.append(component);
+    dispatchActionItem(item);
   });
 };
 
