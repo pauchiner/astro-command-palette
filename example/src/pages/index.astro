@@ -16,6 +16,19 @@ import CommandPalette from '~';
   </body>
 </html>
 
+<script>
+  import createCommandPaletteItems from '~/src/scripts/createItems';
+
+  createCommandPaletteItems([
+    {
+      id: 'miau',
+      name: 'MAIUU',
+      type: 'action',
+      handler: () => alert('Miau')
+    }
+  ]);
+</script>
+
 <style>
   @media (prefers-color-scheme: light) {
     :root {
@@ -73,29 +86,3 @@ import CommandPalette from '~';
     color: var(--background);
   }
 </style>
-
-<script>
-  import {createCommandPaletteItems, openUrl} from '~';
-
-  createCommandPaletteItems([
-    {
-      id: 'github',
-      type: 'action',
-      name: 'Rate On Github',
-      handler: () =>
-        openUrl('https://github.com/pauchiner/astro-command-palette')
-    },
-    {
-      id: 'author',
-      type: 'action',
-      name: 'Author Website',
-      handler: () => openUrl('https://pauchiner.es')
-    },
-    {
-      id: 'test',
-      type: 'action',
-      name: 'Open Alert',
-      handler: () => alert('Hello 😃')
-    }
-  ]);
-</script>
