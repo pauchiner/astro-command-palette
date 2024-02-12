@@ -15,8 +15,8 @@ devDependencies:
     specifier: 6.21.0
     version: 6.21.0(eslint@8.56.0)(typescript@5.3.3)
   astro:
-    specifier: 4.3.4
-    version: 4.3.4(typescript@5.3.3)
+    specifier: 4.3.5
+    version: 4.3.5(typescript@5.3.3)
   eslint:
     specifier: 8.56.0
     version: 8.56.0
@@ -1126,8 +1126,8 @@ packages:
       - supports-color
     dev: true
 
-  /astro@4.3.4(typescript@5.3.3):
-    resolution: {integrity: sha512-BWzGGn/PuwmT0DWX+yXa/jUq99e85AGh9/C5IFAKIfp22Nk88dOfX89RoqKBWPPp2BrK2vsdCFd0WUv8XJh80w==}
+  /astro@4.3.5(typescript@5.3.3):
+    resolution: {integrity: sha512-7jPffNlcmDO94NlkWe/hUWta/pIjlx1LVD/DZb/fyjT1Jv+7mGhKZBIjkDfeVpequW70mep8cAS5RM7Pxa0Gdg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
