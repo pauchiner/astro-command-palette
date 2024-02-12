@@ -1,3 +1,3 @@
-import createCommandPaletteItems from './createItems';
+import createCommandPaletteItems from './createCommandPalette';
 
 export default createCommandPaletteItems;
