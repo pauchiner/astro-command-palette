@@ -11,7 +11,7 @@ const commandPaletteInput = container.querySelector(
 ) as HTMLInputElement;
 
 const commandPaletteItems = [
-  ...container.querySelectorAll('command-palette-action')
+  ...container.querySelectorAll('.command-palette-action')
 ] as HTMLDivElement[];
 
 const openCommandPalette = (): void => {
