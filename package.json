@@ -6,7 +6,8 @@
   "license": "MIT",
   "type": "module",
   "exports": {
-    ".": "./index.ts"
+    ".": "./index.ts",
+    "./hooks": "./src/scripts/index.ts"
   },
   "files": [
     "src",
