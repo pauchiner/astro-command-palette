@@ -21,10 +21,17 @@ import CommandPalette from '~';
 
   createCommandPaletteItems([
     {
-      id: 'miau',
-      name: 'MAIUU',
+      id: 'github',
+      name: 'See the documentation',
       type: 'action',
-      handler: () => alert('Miau')
+      handler: () =>
+        open('https://github.com/pauchiner/astro-command-palette', '_blank')
+    },
+    {
+      id: 'author',
+      name: 'Author',
+      type: 'action',
+      handler: () => open('https://pauchiner.es', '_blank')
     }
   ]);
 </script>
