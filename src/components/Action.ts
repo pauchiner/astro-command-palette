@@ -1,6 +1,39 @@
-import type {CommandPaletteAction} from '../types';
+import type { CommandPaletteAction } from '../types';
 
-class Action extends HTMLElement {
+const createActionItem = (item: CommandPaletteAction) => {
+  const component = document.createElement('button') as HTMLButtonElement;
+
+  component.id = item.id;
+  component.setAttribute('data-selected', (item.selected ?? false).toString());
+
+  component.innerHTML = `
+    <style>
+      .command-palette-action {
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        cursor: pointer;
+        padding-left: 1rem;
+        align-items: center;
+        text-decoration: none;
+      }
+    </style>
+  `;
+  component.classList.add('command-palette-action');
+
+  const span = document.createElement('span');
+  const text = document.createTextNode(item.name);
+  span.appendChild(text);
+
+  component.appendChild(span);
+
+  component.addEventListener('click', item.handler);
+
+  return component;
+};
+
+/*
+class ActionComponent extends HTMLElement {
   private readonly handler: () => void;
   private readonly identifier: string;
   private readonly selected: string;
@@ -62,7 +95,7 @@ class Action extends HTMLElement {
     return component;
   }
 }
+customElements.define('command-palette-action', ActionComponent);
+*/
 
-customElements.define('command-palette-action', Action);
-
-export default Action;
+export default createActionItem;
