@@ -75,6 +75,23 @@ const handleAction = (): void => {
   closeCommandPalette();
 };
 
+const handleSearch = (_event: Event) => {
+  const query = commandPaletteInput.value;
+
+  commandPaletteItems.forEach(function (item) {
+    const text = item.innerText.toLowerCase();
+
+    if (text.includes(query)) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  container.setAttribute('data-selected', '0');
+  updateCurrentItem();
+};
+
 const handleKeyboard = (event: KeyboardEvent): void => {
   const isVisible = container.getAttribute('data-visible') === 'true';
 
@@ -125,6 +142,7 @@ const handleMouseExit = (event: MouseEvent): void => {
   if (target.id === 'command-palette-container') closeCommandPalette();
 };
 
+commandPaletteInput.addEventListener('input', handleSearch);
 document.addEventListener('keydown', handleKeyboard);
 document.addEventListener('mouseover', handleMouse);
 document.addEventListener('click', handleMouseExit);
