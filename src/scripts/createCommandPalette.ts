@@ -10,6 +10,7 @@ const createCommandPaletteItems = (items: CommandPaletteItem[]) => {
   const listToAttach = document.querySelector(
     '#command-palette-items'
   ) as HTMLDivElement;
+  listToAttach.innerText = '';
 
   items.forEach(item => {
     if (item.type === 'group') return;
