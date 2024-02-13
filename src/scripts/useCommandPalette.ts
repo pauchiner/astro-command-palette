@@ -15,9 +15,8 @@ const commandPaletteItems = [
 ] as HTMLDivElement[];
 
 const openCommandPalette = (): void => {
-  container.setAttribute('data-selected', '0');
   container.style.display = 'flex';
-  updateCurrentItem();
+  setCurrentItem(0);
 
   commandPalette.addEventListener('animationend', () => {
     container.setAttribute('data-visible', 'true');
@@ -32,40 +31,51 @@ const closeCommandPalette = (): void => {
   container.style.display = 'none';
 };
 
-const updateCurrentItem = (): void => {
-  const currentIndex = Number(container.getAttribute('data-selected'));
+/**
+ * Sets the current item in the command palette based on the given index.
+ * @param index - The index of the item to set as current.
+ * @remarks If the index is out of range or if the item's style is set to 'none', it will not be selected.
+ * @returns void
+ */
+const setCurrentItem = (index: number) => {
+  let match = false;
 
-  commandPaletteItems.forEach((item, index) =>
-    item.setAttribute('data-selected', (index === currentIndex).toString())
-  );
+  commandPaletteItems.forEach((item, _index) => {
+    if (item.style.display === 'none') {
+      return;
+    }
 
-  commandPaletteItems[currentIndex].scrollIntoView({
+    if (_index !== index) {
+      item.setAttribute('data-selected', 'false');
+      return;
+    }
+
+    item.setAttribute('data-selected', 'true');
+    match = true;
+  });
+
+  if (!match) return;
+
+  commandPaletteItems[index].scrollIntoView({
     behavior: 'smooth',
     block: 'end'
   });
+
+  container.setAttribute('data-selected', index.toString());
 };
 
 const incrementIndex = (): void => {
   const currentIndex = Number(container.getAttribute('data-selected'));
 
-  if (currentIndex >= commandPaletteItems.length - 1) {
-    container.setAttribute('data-selected', '0');
-  } else container.setAttribute('data-selected', (currentIndex + 1).toString());
-
-  updateCurrentItem();
+  if (currentIndex >= commandPaletteItems.length - 1) setCurrentItem(0);
+  else setCurrentItem(currentIndex + 1);
 };
 
 const decrementIndex = (): void => {
   const currentIndex = Number(container.getAttribute('data-selected'));
 
-  if (currentIndex <= 0) {
-    container.setAttribute(
-      'data-selected',
-      (commandPaletteItems.length - 1).toString()
-    );
-  } else container.setAttribute('data-selected', (currentIndex - 1).toString());
-
-  updateCurrentItem();
+  if (currentIndex <= 0) setCurrentItem(commandPaletteItems.length - 1);
+  else setCurrentItem(currentIndex - 1);
 };
 
 const handleAction = (): void => {
@@ -87,9 +97,7 @@ const handleSearch = (_event: Event) => {
       item.style.display = 'none';
     }
   });
-
-  container.setAttribute('data-selected', '0');
-  updateCurrentItem();
+  setCurrentItem(0);
 };
 
 const handleKeyboard = (event: KeyboardEvent): void => {
@@ -129,10 +137,7 @@ const handleMouse = (event: MouseEvent): void => {
   const target = event.target as HTMLElement;
 
   commandPaletteItems.forEach(({id}, index) => {
-    if (target.id === id) {
-      container.setAttribute('data-selected', index.toString());
-      updateCurrentItem();
-    }
+    if (target.id === id) setCurrentItem(index);
   });
 };
 
