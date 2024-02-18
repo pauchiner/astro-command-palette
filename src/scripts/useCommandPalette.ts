@@ -1,3 +1,5 @@
+import { getContainer } from './internals/container';
+
 const container = document.querySelector(
   '#command-palette-container'
 ) as HTMLDivElement;
@@ -14,7 +16,14 @@ const commandPaletteItems = [
   ...container.querySelectorAll('.command-palette-action')
 ] as HTMLDivElement[];
 
-const openCommandPalette = (): void => {
+/**
+ * Opens the command palette by displaying it and setting the current item to the first item.
+ * Also focuses on the command palette input.
+ * @returns void
+ */
+export const openCommandPalette = (): void => {
+  const { container } = getContainer();
+
   container.style.display = 'flex';
   setCurrentItem(0);
 
@@ -25,10 +34,19 @@ const openCommandPalette = (): void => {
   commandPaletteInput.focus();
 };
 
-const closeCommandPalette = (): void => {
+/**
+ * Closes the command palette by hiding it and clearing the input value after a short delay.
+ * @returns void
+ */
+export const closeCommandPalette = (): void => {
+  const { container } = getContainer();
+  const input = container.querySelector(
+    '#command-palette-input'
+  ) as HTMLInputElement;
+
   setTimeout(() => container.setAttribute('data-visible', 'false'), 150);
-  commandPaletteInput.value = '';
   container.style.display = 'none';
+  input.value = '';
 };
 
 /**
@@ -88,7 +106,7 @@ const handleAction = (): void => {
 const handleSearch = (_event: Event) => {
   const query = commandPaletteInput.value;
 
-  commandPaletteItems.forEach(function (item) {
+  commandPaletteItems.forEach(function(item) {
     const text = item.innerText.toLowerCase();
 
     if (text.includes(query)) {
@@ -136,7 +154,7 @@ const handleMouse = (event: MouseEvent): void => {
 
   const target = event.target as HTMLElement;
 
-  commandPaletteItems.forEach(({id}, index) => {
+  commandPaletteItems.forEach(({ id }, index) => {
     if (target.id === id) setCurrentItem(index);
   });
 };
