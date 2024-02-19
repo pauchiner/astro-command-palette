@@ -1,5 +1,5 @@
-import type {CommandPaletteAction, CommandPaletteItem} from '../types';
-import createActionItem from '../components/Action';
+import type {CommandPaletteAction, CommandPaletteItem} from '../../types';
+import createActionItem from '../../components/Action';
 
 const dispatchActionItem = (item: CommandPaletteAction) => {
   const action = document.querySelector(`#${item.id}`) as HTMLButtonElement;
