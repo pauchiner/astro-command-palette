@@ -1,10 +1,10 @@
 import {getElements, dispatchSearch} from './internals';
 import {handleClick, handleHover} from './mouse';
-import useKeyboard from './useKeyboard';
+import {handleKeyboard} from './keyboard';
 
 const {container, input} = getElements();
 
 input.addEventListener('input', dispatchSearch);
 document.addEventListener('click', handleClick);
-document.addEventListener('keydown', useKeyboard);
+document.addEventListener('keydown', handleKeyboard);
 container.addEventListener('mouseover', handleHover);

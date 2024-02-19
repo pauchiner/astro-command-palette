@@ -6,7 +6,7 @@ import {
   getElements
 } from './internals';
 
-const useKeys = (event: KeyboardEvent) => {
+const handleKeystrokes = (event: KeyboardEvent) => {
   /*
    * The main shortcut to open a close the command palette.
    * @returns if the keybinding is pressed
@@ -48,10 +48,10 @@ const useKeys = (event: KeyboardEvent) => {
   };
 };
 
-const useKeyboard = (event: KeyboardEvent) => {
+export const handleKeyboard = (event: KeyboardEvent) => {
   const {isVisible} = getElements();
   const {commandPressed, escapePressed, enterPressed, downPressed, upPressed} =
-    useKeys(event);
+    handleKeystrokes(event);
 
   if (isVisible && (commandPressed || escapePressed)) closeCommandPalette();
   if (!isVisible && commandPressed) openCommandPalette();
@@ -71,5 +71,3 @@ const useKeyboard = (event: KeyboardEvent) => {
     }
   }
 };
-
-export default useKeyboard;
