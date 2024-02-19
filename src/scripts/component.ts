@@ -1,9 +1,8 @@
 import {getElements, dispatchSearch} from './internals';
+import {handleClick, handleHover} from './mouse';
 import useKeyboard from './useKeyboard';
-import useMouse from './useMouse';
 
 const {container, input} = getElements();
-const {handleHover, handleClick} = useMouse();
 
 input.addEventListener('input', dispatchSearch);
 document.addEventListener('click', handleClick);
