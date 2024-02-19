@@ -1,12 +1,12 @@
+import {getElements} from './elements';
+
 /**
  * Retrieves the index of the currently selected item in the container.
  * @returns The index of the currently selected item, represented as a number. Returns 0 if no item is selected.
  */
 export const getCurrentItem = () => {
   try {
-    const container = document.querySelector(
-      '#command-palette-container'
-    ) as HTMLDivElement;
+    const {container} = getElements();
     return Number(container.getAttribute('data-selected'));
   } catch {
     return 0;
@@ -20,15 +20,10 @@ export const getCurrentItem = () => {
  * @returns void
  */
 export const setCurrentItem = (index: number) => {
-  const items = [
-    ...document.querySelectorAll('.command-palette-action')
-  ] as HTMLButtonElement[];
-  const container = document.querySelector(
-    '#command-palette-container'
-  ) as HTMLDivElement;
+  const {container, actionItems} = getElements();
   let match = false;
 
-  items.forEach((item, _index) => {
+  actionItems.forEach((item, _index) => {
     if (item.style.display === 'none') {
       return;
     }
@@ -44,7 +39,7 @@ export const setCurrentItem = (index: number) => {
 
   if (!match) return;
 
-  items[index].scrollIntoView({
+  actionItems[index].scrollIntoView({
     behavior: 'smooth',
     block: 'end'
   });
@@ -58,12 +53,10 @@ export const setCurrentItem = (index: number) => {
  * @returns void
  */
 export const incrementItem = () => {
-  const items = [
-    ...document.querySelectorAll('.command-palette-action')
-  ] as HTMLButtonElement[];
+  const {actionItems} = getElements();
   const current = getCurrentItem();
 
-  if (current >= items.length - 1) setCurrentItem(0);
+  if (current >= actionItems.length - 1) setCurrentItem(0);
   else setCurrentItem(current + 1);
 };
 
@@ -73,12 +66,10 @@ export const incrementItem = () => {
  * @returns void
  */
 export const decrementItem = () => {
-  const items = [
-    ...document.querySelectorAll('.command-palette-action')
-  ] as HTMLButtonElement[];
+  const {actionItems} = getElements();
   const current = getCurrentItem();
 
-  if (current <= 0) setCurrentItem(items.length - 1);
+  if (current <= 0) setCurrentItem(actionItems.length - 1);
   else setCurrentItem(current - 1);
 };
 
@@ -87,17 +78,10 @@ export const decrementItem = () => {
  * @returns void
  */
 export const dispatchSearch = () => {
-  const input = document.querySelector(
-    '#command-palette-input'
-  ) as HTMLInputElement;
-
-  const items = [
-    ...document.querySelectorAll('.command-palette-action')
-  ] as HTMLButtonElement[];
-
+  const {actionItems, input} = getElements();
   const query = input.value;
 
-  items.forEach(function(item) {
+  actionItems.forEach(function (item) {
     const text = item.innerText.toLowerCase();
 
     if (text.includes(query)) {
@@ -115,9 +99,7 @@ export const dispatchSearch = () => {
  * @returns void
  */
 export const dispatchAction = () => {
-  const items = [
-    ...document.querySelectorAll('.command-palette-action')
-  ] as HTMLButtonElement[];
+  const {actionItems} = getElements();
   const current = getCurrentItem();
-  items[current].click();
+  actionItems[current].click();
 };
