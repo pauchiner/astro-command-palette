@@ -1,8 +1,9 @@
+import {openCommandPalette, closeCommandPalette} from './useCommandPalette';
 import {
   incrementItem,
   dispatchAction,
   decrementItem,
-  getContainer
+  getElements
 } from './internals';
 
 const useKeys = (event: KeyboardEvent) => {
@@ -38,12 +39,18 @@ const useKeys = (event: KeyboardEvent) => {
   const upPressed =
     event.key === 'ArrowUp' || (event.shiftKey && event.key === 'Tab');
 
-  return { commandPressed, escapePressed, enterPressed, downPressed, upPressed };
+  return {
+    commandPressed,
+    escapePressed,
+    enterPressed,
+    downPressed,
+    upPressed
+  };
 };
 
-const handleKeyboard = (event: KeyboardEvent) => {
-  const { isVisible } = getContainer();
-  const { commandPressed, escapePressed, enterPressed, downPressed, upPressed } =
+const useKeyboard = (event: KeyboardEvent) => {
+  const {isVisible} = getElements();
+  const {commandPressed, escapePressed, enterPressed, downPressed, upPressed} =
     useKeys(event);
 
   if (isVisible && (commandPressed || escapePressed)) closeCommandPalette();
@@ -65,5 +72,4 @@ const handleKeyboard = (event: KeyboardEvent) => {
   }
 };
 
-const { container } = getContainer();
-container.addEventListener('keydown', handleKeyboard);
+export default useKeyboard;
