@@ -1,4 +1,5 @@
 import {getElements} from './elements';
+import {search} from './search';
 
 /**
  * Retrieves the index of the currently selected item in the container.
@@ -79,12 +80,17 @@ export const decrementItem = () => {
  */
 export const dispatchSearch = () => {
   const {actionItems, input} = getElements();
-  const query = input.value;
+
+  const data = Array.from(actionItems).map(
+    item => item.querySelector('span')?.innerText.toLowerCase() ?? ''
+  );
+
+  const results = search(data, input.value);
 
   actionItems.forEach(function (item) {
-    const text = item.innerText.toLowerCase();
+    const text = item.querySelector('span')?.innerText.toLowerCase();
 
-    if (text.includes(query)) {
+    if (results.some(result => result === text)) {
       item.style.display = 'flex';
     } else {
       item.style.display = 'none';
