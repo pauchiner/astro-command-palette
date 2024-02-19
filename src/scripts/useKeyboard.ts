@@ -1,4 +1,4 @@
-import {openCommandPalette, closeCommandPalette} from './useCommandPalette';
+import {openCommandPalette, closeCommandPalette} from './command-palette';
 import {
   incrementItem,
   dispatchAction,

@@ -1,5 +1,5 @@
 import {setCurrentItem, getElements} from './internals';
-import {closeCommandPalette} from './useCommandPalette';
+import {closeCommandPalette} from './command-palette';
 
 const useMouse = () => {
   const {actionItems, container} = getElements();
