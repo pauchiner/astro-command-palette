@@ -81,7 +81,6 @@
   color: var(--text);
   background: var(--background);
   font-family: system-ui, sans-serif;
-  transition: background 150ms ease-out;
 }
 
 .command-palette-action[data-selected='true'] {
