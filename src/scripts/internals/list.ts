@@ -83,16 +83,20 @@ export const dispatchSearch = () => {
   const results = search(data, input.value);
   */
 
+  let firstMatch = true;
   actionItems.forEach((item, _index) => {
     const text = item.querySelector('span')?.innerText.toLowerCase() ?? '';
 
     if (text.includes(input.value)) {
       item.style.display = 'flex';
+      if (firstMatch) {
+        setCurrentItem(_index);
+        firstMatch = false;
+      }
     } else {
       item.style.display = 'none';
     }
   });
-  setCurrentItem(0);
 };
 
 /**
