@@ -25,15 +25,10 @@ export const setCurrentItem = (index: number) => {
   let match = false;
 
   actionItems.forEach((item, _index) => {
-    if (item.style.display === 'none') {
-      return;
-    }
-
     if (_index !== index) {
       item.setAttribute('data-selected', 'false');
       return;
     }
-
     item.setAttribute('data-selected', 'true');
     match = true;
   });
@@ -41,8 +36,8 @@ export const setCurrentItem = (index: number) => {
   if (!match) return;
 
   actionItems[index].scrollIntoView({
-    behavior: 'smooth',
-    block: 'end'
+    behavior: 'instant',
+    block: 'nearest'
   });
 
   container.setAttribute('data-selected', index.toString());
