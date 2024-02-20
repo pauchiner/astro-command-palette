@@ -1,5 +1,4 @@
 import {getElements} from './elements';
-import {search} from './search';
 
 /**
  * Retrieves the index of the currently selected item in the container.
@@ -17,7 +16,7 @@ export const getCurrentItem = () => {
 /**
  * Sets the current item in the command palette based on the given index.
  * @param index - The index of the item to set as current.
- * @remarks If the index is out of range or if the item's style is set to 'none', it will not be selected.
+ * @remarks If the index is out of range, it will not be selected.
  * @returns void
  */
 export const setCurrentItem = (index: number) => {
@@ -76,16 +75,18 @@ export const decrementItem = () => {
 export const dispatchSearch = () => {
   const {actionItems, input} = getElements();
 
+  /*
   const data = Array.from(actionItems).map(
     item => item.querySelector('span')?.innerText.toLowerCase() ?? ''
   );
 
   const results = search(data, input.value);
+  */
 
-  actionItems.forEach(function (item) {
-    const text = item.querySelector('span')?.innerText.toLowerCase();
+  actionItems.forEach((item, _index) => {
+    const text = item.querySelector('span')?.innerText.toLowerCase() ?? '';
 
-    if (results.some(result => result === text)) {
+    if (text.includes(input.value)) {
       item.style.display = 'flex';
     } else {
       item.style.display = 'none';
