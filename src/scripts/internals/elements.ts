@@ -16,6 +16,12 @@ export const getElements = () => {
     ...container.querySelectorAll('.command-palette-action')
   ] as HTMLButtonElement[];
 
+  const getActionItemsVisible = () => {
+    return actionItems.filter(item => {
+      return window.getComputedStyle(item).display === 'flex';
+    });
+  };
+
   const input = container.querySelector(
     '#command-palette-input'
   ) as HTMLInputElement;
@@ -24,6 +30,7 @@ export const getElements = () => {
     container.getAttribute('data-visible') === 'true' ? true : false;
 
   return {
+    getActionItemsVisible,
     commandPalette,
     actionItems,
     container,

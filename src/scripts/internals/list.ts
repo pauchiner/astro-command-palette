@@ -20,10 +20,11 @@ export const getCurrentItem = () => {
  * @returns void
  */
 export const setCurrentItem = (index: number) => {
-  const {container, actionItems} = getElements();
-  let match = false;
+  const {container, getActionItemsVisible} = getElements();
+  const items = getActionItemsVisible();
 
-  actionItems.forEach((item, _index) => {
+  let match = false;
+  items.forEach((item, _index) => {
     if (_index !== index) {
       item.setAttribute('data-selected', 'false');
       return;
@@ -34,7 +35,7 @@ export const setCurrentItem = (index: number) => {
 
   if (!match) return;
 
-  actionItems[index].scrollIntoView({
+  items[index].scrollIntoView({
     behavior: 'instant',
     block: 'nearest'
   });
@@ -48,10 +49,11 @@ export const setCurrentItem = (index: number) => {
  * @returns void
  */
 export const incrementItem = () => {
-  const {actionItems} = getElements();
+  const {getActionItemsVisible} = getElements();
+  const items = getActionItemsVisible();
   const current = getCurrentItem();
 
-  if (current >= actionItems.length - 1) setCurrentItem(0);
+  if (current >= items.length - 1) setCurrentItem(0);
   else setCurrentItem(current + 1);
 };
 
@@ -61,10 +63,11 @@ export const incrementItem = () => {
  * @returns void
  */
 export const decrementItem = () => {
-  const {actionItems} = getElements();
+  const {getActionItemsVisible} = getElements();
+  const items = getActionItemsVisible();
   const current = getCurrentItem();
 
-  if (current <= 0) setCurrentItem(actionItems.length - 1);
+  if (current <= 0) setCurrentItem(items.length - 1);
   else setCurrentItem(current - 1);
 };
 
@@ -82,21 +85,16 @@ export const dispatchSearch = () => {
 
   const results = search(data, input.value);
   */
-
-  let firstMatch = true;
   actionItems.forEach((item, _index) => {
     const text = item.querySelector('span')?.innerText.toLowerCase() ?? '';
 
     if (text.includes(input.value)) {
       item.style.display = 'flex';
-      if (firstMatch) {
-        setCurrentItem(_index);
-        firstMatch = false;
-      }
     } else {
       item.style.display = 'none';
     }
   });
+  setCurrentItem(0);
 };
 
 /**
