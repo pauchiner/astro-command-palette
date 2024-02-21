@@ -15,8 +15,7 @@ const createCommandPaletteItems = (items: CommandPaletteItem[]) => {
   listToAttach.innerText = '';
 
   items.forEach(item => {
-    if (item.type === 'group') return;
-
+    if (item.type === 'page') return;
     const component = createActionItem(item);
     listToAttach.append(component);
     dispatchActionItem(item);
