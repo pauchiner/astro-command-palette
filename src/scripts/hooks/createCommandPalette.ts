@@ -3,7 +3,9 @@ import createActionItem from '../../components/Action';
 
 const dispatchActionItem = (item: CommandPaletteAction) => {
   const action = document.querySelector(`#${item.id}`) as HTMLButtonElement;
-  action.addEventListener('click', item.handler);
+  if (item.handler) action.addEventListener('click', item.handler);
+  if (item.url)
+    action.addEventListener('click', () => window.open(item.url, '_blank'));
 };
 
 const createCommandPaletteItems = (items: CommandPaletteItem[]) => {

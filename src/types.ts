@@ -6,11 +6,23 @@ type CommandPaletteBaseItem = {
   type: CommandPaletteItemType;
 };
 
-export type CommandPaletteAction = CommandPaletteBaseItem & {
+type CommandPaletteButtonAction = CommandPaletteBaseItem & {
   type: 'action';
   selected?: boolean;
+  url?: never;
   handler: () => void;
 };
+
+type CommandPaletteLinkAction = CommandPaletteBaseItem & {
+  type: 'action';
+  selected?: boolean;
+  url: string;
+  handler?: never;
+};
+
+export type CommandPaletteAction =
+  | CommandPaletteButtonAction
+  | CommandPaletteLinkAction;
 
 export type CommandPaletteGroup = CommandPaletteBaseItem & {
   type: 'group';
