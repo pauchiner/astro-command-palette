@@ -1,4 +1,4 @@
-import type { CommandPaletteAction, CommandPaletteItem } from '../../types';
+import type {CommandPaletteAction, CommandPaletteItem} from '../../types';
 import createActionItem from '../../components/Action';
 
 const dispatchActionItem = (item: CommandPaletteAction) => {
@@ -10,7 +10,7 @@ const dispatchActionItem = (item: CommandPaletteAction) => {
 
 const createCommandPaletteItems = (items: CommandPaletteItem[]) => {
   const listToAttach = document.querySelector(
-    '#command-palette-items-container'
+    'command-palette-items'
   ) as HTMLDivElement;
   listToAttach.innerText = '';
 
