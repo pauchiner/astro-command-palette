@@ -1,4 +1,4 @@
-import type { CommandPaletteAction } from '../types';
+import type {CommandPaletteAction} from '../types';
 
 const createActionItem = (item: CommandPaletteAction) => {
   const component = document.createElement(
@@ -20,7 +20,6 @@ const createActionItem = (item: CommandPaletteAction) => {
       }
     </style>
   `;
-  component.classList.add('command-palette-action');
 
   const span = document.createElement('span');
   const text = document.createTextNode(item.name);
