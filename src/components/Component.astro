@@ -13,12 +13,12 @@ import List from './List.astro';
   id="command-palette-container">
   <command-palette id="command-palette">
     <Header />
-    <List />
-    <!--
-    <slot name="footer">
-      <Footer />
-    </slot>
-    -->
+    <command-palette-body>
+      <List />
+      <slot name="footer">
+        <Footer />
+      </slot>
+    </command-palette-body>
   </command-palette>
   <Backdrop />
 </astro-command-palette>
@@ -33,15 +33,23 @@ import List from './List.astro';
     display: none;
     position: fixed;
     z-index: 999999;
-    align-items: center;
     box-sizing: border-box;
     justify-content: center;
   }
 
+  command-palette-body {
+    position: relative;
+    width: 40rem;
+  }
+
   command-palette {
+    top: 36dvh;
     z-index: 10;
     width: 40rem;
     display: flex;
+    background: blue;
+    padding-top: 4rem;
+    position: absolute;
     align-items: center;
     flex-direction: column;
   }

@@ -44,6 +44,11 @@ command-palette-backdrop {
   scrollbar-color: var(--selected) var(--background);
 }
 
+command-palette-header {
+  background: var(--background);
+  border-radius: 0.5rem;
+}
+
 #command-palette-input {
   border: none;
   font-size: 1rem;
@@ -53,7 +58,7 @@ command-palette-backdrop {
   caret-color: var(--text);
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
-  border-bottom: 1px solid var(--placeholder);
+  /*border-bottom: 1px solid var(--placeholder);*/
 }
 
 #command-palette-input:focus-visible {
