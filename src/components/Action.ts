@@ -14,7 +14,6 @@ const createActionItem = (item: CommandPaletteAction) => {
         width: 100%;
         height: 3rem;
         display: flex;
-        cursor: pointer;
         padding-left: 1rem;
         align-items: center;
         text-decoration: none;

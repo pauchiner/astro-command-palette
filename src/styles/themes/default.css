@@ -86,6 +86,10 @@ command-palette-action {
   font-family: system-ui, sans-serif;
 }
 
+command-palette-action:hover {
+  background: var(--command-palette-keybinds);
+}
+
 command-palette-action[data-selected='true'] {
   background: var(--command-palette-selected);
 }
