@@ -1,32 +1,35 @@
 ---
 import '../styles/themes/default.css';
+import Backdrop from './Backdrop.astro';
 import Footer from './Footer.astro';
 import Input from './Input.astro';
 import List from './List.astro';
 ---
 
 <astro-command-palette
-  role="combobox"
   data-visible="false"
   data-selected="0"
+  role="combobox"
   id="command-palette-container">
   <command-palette id="command-palette">
     <slot name="input">
       <Input />
     </slot>
     <List />
+    <!--
     <slot name="footer">
       <Footer />
     </slot>
+    -->
   </command-palette>
+  <Backdrop />
 </astro-command-palette>
 
 <script src="../scripts/index.ts"></script>
 
 <style>
   astro-command-palette {
-    margin: 0;
-    padding: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     display: none;
@@ -38,6 +41,7 @@ import List from './List.astro';
   }
 
   command-palette {
+    z-index: 10;
     width: 40rem;
     display: flex;
     align-items: center;
