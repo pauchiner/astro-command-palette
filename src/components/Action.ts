@@ -1,14 +1,16 @@
 import type { CommandPaletteAction } from '../types';
 
 const createActionItem = (item: CommandPaletteAction) => {
-  const component = document.createElement('button') as HTMLButtonElement;
+  const component = document.createElement(
+    'command-palette-action'
+  ) as HTMLElement;
 
   component.id = item.id;
   component.setAttribute('data-selected', (item.selected ?? false).toString());
 
   component.innerHTML = `
     <style>
-      .command-palette-action {
+      command-palette-action {
         width: 100%;
         height: 3rem;
         display: flex;
