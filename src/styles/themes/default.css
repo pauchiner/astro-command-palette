@@ -2,50 +2,50 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --text: #151c26;
-    --footer: #f6f8fd;
-    --keybinds: #e4e8ef;
-    --backdrop: #f0f4fc30;
-    --selected: #d8dce3;
-    --placeholder: #c0c3ca;
-    --background: #f0f4fc;
+    --command-palette-text: #151c26;
+    --command-palette-footer: #f6f8fd;
+    --command-palette-keybinds: #e4e8ef;
+    --command-palette-backdrop: #f0f4fc30;
+    --command-palette-selected: #d8dce3;
+    --command-palette-placeholder: #c0c3ca;
+    --command-palette-background: #f0f4fc;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #f0f4fc;
-    --footer: #131922;
-    --selected: #212731;
-    --background: #131922;
-    --backdrop: #151c2630;
-    --placeholder: #7e8288;
+    --command-palette-text: #f0f4fc;
+    --command-palette-footer: #131922;
+    --command-palette-selected: #212731;
+    --command-palette-background: #131922;
+    --command-palette-backdrop: #151c2630;
+    --command-palette-placeholder: #7e8288;
   }
 }
 
 /*-------Styles-------*/
 
 command-palette {
-  color: var(--text);
+  color: var(--command-palette-text);
   margin-inline: 10px;
   border-radius: 0.5rem;
-  background: var(--background);
+  background: var(--command-palette-background);
   animation: fade 150ms ease-out;
   box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
 }
 
 command-palette-backdrop {
-  background: var(--backdrop);
+  background: var(--command-palette-backdrop);
 }
 
 command-palette-list {
   overflow: hidden;
-  scrollbar-color: var(--selected) var(--background);
+  scrollbar-color: var(--command-palette-selected) var(--command-palette-background);
 }
 
 command-palette-header {
-  background: var(--background);
+  background: var(--command-palette-background);
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
 }
@@ -54,9 +54,9 @@ command-palette-header input {
   border: none;
   font-size: 1rem;
   background: none;
-  color: var(--text);
+  color: var(--command-palette-text);
   font-family: monospace;
-  caret-color: var(--text);
+  caret-color: var(--command-palette-text);
 }
 
 command-palette-header input:focus-visible {
@@ -64,30 +64,30 @@ command-palette-header input:focus-visible {
 }
 
 command-palette-header input::placeholder {
-  color: var(--placeholder);
+  color: var(--command-palette-placeholder);
 }
 
 command-palette-footer {
-  background: var(--footer);
+  background: var(--command-palette-footer);
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 
   & kbd {
     border-radius: 0.25rem;
-    background: var(--keybinds);
+    background: var(--command-palette-keybinds);
   }
 }
 
 command-palette-action {
   border: none;
   font-size: 0.9rem;
-  color: var(--text);
-  background: var(--background);
+  color: var(--command-palette-text);
+  background: var(--command-palette-background);
   font-family: system-ui, sans-serif;
 }
 
 command-palette-action[data-selected='true'] {
-  background: var(--selected);
+  background: var(--command-palette-selected);
 }
 
 /*-----Animations-----*/
