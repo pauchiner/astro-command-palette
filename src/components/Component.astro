@@ -5,7 +5,10 @@ import Input from './Input.astro';
 import List from './List.astro';
 ---
 
-<div data-visible="false" data-selected="0" id="command-palette-container">
+<astro-command-palette
+  data-visible="false"
+  data-selected="0"
+  id="command-palette-container">
   <div id="command-palette">
     <slot name="input">
       <Input />
@@ -15,7 +18,7 @@ import List from './List.astro';
       <Footer />
     </slot>
   </div>
-</div>
+</astro-command-palette>
 
 <script src="../scripts/index.ts"></script>
 
