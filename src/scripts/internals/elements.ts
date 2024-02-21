@@ -5,15 +5,15 @@
  */
 export const getElements = () => {
   const container = document.querySelector(
-    '#command-palette-container'
+    'astro-command-palette'
   ) as HTMLElement;
 
   const commandPalette = document.querySelector(
-    '#command-palette'
+    'command-palette'
   ) as HTMLElement;
 
   const actionItems = [
-    ...container.querySelectorAll('.command-palette-action')
+    ...container.querySelectorAll('command-palette-action')
   ] as HTMLButtonElement[];
 
   const getActionItemsVisible = () => {
@@ -23,7 +23,7 @@ export const getElements = () => {
   };
 
   const input = container.querySelector(
-    '#command-palette-input'
+    'command-palette-header input'
   ) as HTMLInputElement;
 
   const isVisible =
