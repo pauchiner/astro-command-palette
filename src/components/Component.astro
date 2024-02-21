@@ -9,7 +9,7 @@ import List from './List.astro';
   data-visible="false"
   data-selected="0"
   id="command-palette-container">
-  <div id="command-palette">
+  <command-palette id="command-palette">
     <slot name="input">
       <Input />
     </slot>
@@ -17,13 +17,13 @@ import List from './List.astro';
     <slot name="footer">
       <Footer />
     </slot>
-  </div>
+  </command-palette>
 </astro-command-palette>
 
 <script src="../scripts/index.ts"></script>
 
 <style>
-  #command-palette-container {
+  astro-command-palette {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -36,7 +36,7 @@ import List from './List.astro';
     justify-content: center;
   }
 
-  #command-palette {
+  command-palette {
     width: 40rem;
     display: flex;
     align-items: center;
