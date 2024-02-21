@@ -2,7 +2,7 @@
 import '../styles/themes/default.css';
 import Backdrop from './Backdrop.astro';
 import Footer from './Footer.astro';
-import Input from './Input.astro';
+import Header from './Header.astro';
 import List from './List.astro';
 ---
 
@@ -12,9 +12,7 @@ import List from './List.astro';
   role="combobox"
   id="command-palette-container">
   <command-palette id="command-palette">
-    <slot name="input">
-      <Input />
-    </slot>
+    <Header />
     <List />
     <!--
     <slot name="footer">

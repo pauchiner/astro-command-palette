@@ -7,14 +7,20 @@ interface Props {
 const {placeholder = 'Search anything here', maxLength = 60} = Astro.props;
 ---
 
-<input
-  id="command-palette-input"
-  placeholder={placeholder}
-  maxlength={maxLength}
-/>
+<command-palette-header role="searchbox">
+  <input
+    id="command-palette-input"
+    placeholder={placeholder}
+    maxlength={maxLength}
+  />
+</command-palette-header>
 
 <style>
-  #command-palette-input {
+  command-palette-header {
+    width: 100%;
+  }
+
+  input {
     width: calc(100% - 2rem);
     padding-inline: 1rem;
     height: 4rem;
