@@ -25,7 +25,7 @@
 
 /*-------Styles-------*/
 
-#command-palette {
+command-palette {
   color: var(--text);
   margin-inline: 10px;
   border-radius: 0.5rem;
@@ -39,37 +39,35 @@ command-palette-backdrop {
   background: var(--backdrop);
 }
 
-#command-palette-items {
+command-palette-list {
   overflow: hidden;
   scrollbar-color: var(--selected) var(--background);
 }
 
 command-palette-header {
   background: var(--background);
-  border-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
 }
 
-#command-palette-input {
+command-palette-header input {
   border: none;
   font-size: 1rem;
   background: none;
   color: var(--text);
   font-family: monospace;
   caret-color: var(--text);
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
-  /*border-bottom: 1px solid var(--placeholder);*/
 }
 
-#command-palette-input:focus-visible {
+command-palette-header input:focus-visible {
   outline: none;
 }
 
-#command-palette-input::placeholder {
+command-palette-header input::placeholder {
   color: var(--placeholder);
 }
 
-#command-palette-footer {
+command-palette-footer {
   background: var(--footer);
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -80,7 +78,7 @@ command-palette-header {
   }
 }
 
-.command-palette-action {
+command-palette-action {
   border: none;
   font-size: 0.9rem;
   color: var(--text);
@@ -88,7 +86,7 @@ command-palette-header {
   font-family: system-ui, sans-serif;
 }
 
-.command-palette-action[data-selected='true'] {
+command-palette-action[data-selected='true'] {
   background: var(--selected);
 }
 
