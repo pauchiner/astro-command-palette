@@ -5,7 +5,9 @@ const dispatchActionItem = (item: CommandPaletteAction) => {
   const action = document.querySelector(`#${item.id}`) as HTMLElement;
   if (item.handler) action.addEventListener('click', item.handler);
   if (item.url)
-    action.addEventListener('click', () => window.open(item.url, '_blank'));
+    action.addEventListener('click', () =>
+      window.open(item.url, '_blank', 'noopener nofollow')
+    );
 };
 
 const createCommandPaletteItems = (items: CommandPaletteItem[]) => {

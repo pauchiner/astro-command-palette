@@ -29,10 +29,3 @@ export const closeCommandPalette = (): void => {
   container.style.display = 'none';
   input.value = '';
 };
-
-/**
- * Sets the current item in the command palette based on the given index.
- * @param index - The index of the item to set as current.
- * @remarks If the index is out of range or if the item's style is set to 'none', it will not be selected.
- * @returns void
- */
