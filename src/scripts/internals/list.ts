@@ -1,4 +1,4 @@
-import {getElements} from './elements';
+import { getElements } from './elements';
 
 /**
  * Retrieves the index of the currently selected item in the container.
@@ -6,7 +6,7 @@ import {getElements} from './elements';
  */
 export const getCurrentItem = () => {
   try {
-    const {container} = getElements();
+    const { container } = getElements();
     return Number(container.getAttribute('data-selected'));
   } catch {
     return 0;
@@ -20,7 +20,7 @@ export const getCurrentItem = () => {
  * @returns void
  */
 export const setCurrentItem = (index: number) => {
-  const {container, getActionItemsVisible} = getElements();
+  const { container, getActionItemsVisible } = getElements();
   const items = getActionItemsVisible();
 
   let match = false;
@@ -49,7 +49,7 @@ export const setCurrentItem = (index: number) => {
  * @returns void
  */
 export const incrementItem = () => {
-  const {getActionItemsVisible} = getElements();
+  const { getActionItemsVisible } = getElements();
   const items = getActionItemsVisible();
   const current = getCurrentItem();
 
@@ -63,7 +63,7 @@ export const incrementItem = () => {
  * @returns void
  */
 export const decrementItem = () => {
-  const {getActionItemsVisible} = getElements();
+  const { getActionItemsVisible } = getElements();
   const items = getActionItemsVisible();
   const current = getCurrentItem();
 
@@ -76,7 +76,7 @@ export const decrementItem = () => {
  * @returns void
  */
 export const dispatchSearch = () => {
-  const {actionItems, input} = getElements();
+  const { actionItems, input } = getElements();
 
   /*
   const data = Array.from(actionItems).map(
@@ -103,7 +103,8 @@ export const dispatchSearch = () => {
  * @returns void
  */
 export const dispatchAction = () => {
-  const {actionItems} = getElements();
+  const { getActionItemsVisible } = getElements();
+  const actionItems = getActionItemsVisible();
   const current = getCurrentItem();
   actionItems[current].click();
 };
