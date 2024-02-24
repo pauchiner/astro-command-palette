@@ -1,11 +1,11 @@
 const bitapSearch = (text: string, pattern: string, margin: number) => {
   let result = -1;
-  let patternMask: number[] = new Array(128);
+  const patternMask: number[] = new Array(128);
 
   if (!pattern) return 0;
   if (pattern.length > 31) return -1;
 
-  let R: number[] = new Array<number>();
+  const R: number[] = new Array<number>();
   for (let i = 0; i <= margin; ++i) {
     R[i] = ~1;
   }
@@ -42,7 +42,7 @@ const bitapSearch = (text: string, pattern: string, margin: number) => {
 };
 
 export const search = (data: string[], input: string) => {
-  let result: Array<string> = [];
+  const result: Array<string> = [];
   const pattern = input.toLowerCase();
 
   data.forEach(item => {
