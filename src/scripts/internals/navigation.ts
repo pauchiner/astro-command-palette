@@ -1,6 +1,6 @@
 import store from './store';
 
-const STORAGE_KEY = '_currentRoute';
+const STORAGE_KEY = 'currentRoute';
 
 const setRoute = (route: string) => {
   store.setItem(STORAGE_KEY, route);
