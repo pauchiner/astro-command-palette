@@ -1,5 +1,9 @@
-import {navigate} from 'astro/virtual-modules/transitions-router.js';
-import {setCurrentItem, getElements, dispatchSearch} from './internals';
+import {
+  navigate,
+  getElements,
+  dispatchSearch,
+  setCurrentItem
+} from './internals';
 
 /**
  * Opens the command palette by displaying it, setting the current item to the

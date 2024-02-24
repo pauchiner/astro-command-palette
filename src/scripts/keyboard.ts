@@ -3,8 +3,9 @@ import {
   closeCommandPalette,
   hideCommandPalette
 } from './command-palette';
-import {getCurrentRoute, goBack} from './internals/navigation';
 import {
+  getCurrentRoute,
+  goBack,
   incrementItem,
   dispatchAction,
   decrementItem,
