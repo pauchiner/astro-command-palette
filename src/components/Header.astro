@@ -8,7 +8,11 @@ const {placeholder = 'Search anything here', maxLength = 60} = Astro.props;
 ---
 
 <command-palette-header role="searchbox">
-  <input placeholder={placeholder} maxlength={maxLength} />
+  <input
+    name="Command Palette Input"
+    placeholder={placeholder}
+    maxlength={maxLength}
+  />
 </command-palette-header>
 
 <style>
