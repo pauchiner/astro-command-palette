@@ -41,8 +41,7 @@ command-palette-backdrop {
 
 command-palette-list {
   overflow: hidden;
-  scrollbar-color: var(--command-palette-selected)
-    var(--command-palette-background);
+  scrollbar-color: var(--command-palette-selected) var(--command-palette-background);
 }
 
 command-palette-header {
@@ -79,7 +78,7 @@ command-palette-footer {
   }
 }
 
-command-palette-action {
+command-palette-item {
   border: none;
   font-size: 0.9rem;
   color: var(--command-palette-text);
@@ -87,11 +86,11 @@ command-palette-action {
   font-family: system-ui, sans-serif;
 }
 
-command-palette-action:hover {
+command-palette-item:hover {
   background: var(--command-palette-keybinds);
 }
 
-command-palette-action[data-selected='true'] {
+command-palette-item[data-selected='true'] {
   background: var(--command-palette-selected);
 }
 

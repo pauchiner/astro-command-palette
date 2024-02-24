@@ -64,7 +64,7 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
 
 const createCommandPaletteItem = (item: CommandPaletteItem) => {
   const component = document.createElement(
-    'command-palette-action'
+    'command-palette-item'
   ) as HTMLElement;
 
   component.id = item.id;
@@ -72,7 +72,7 @@ const createCommandPaletteItem = (item: CommandPaletteItem) => {
 
   component.innerHTML = `
     <style>
-      command-palette-action {
+      command-palette-item {
         width: 100%;
         height: 3rem;
         display: flex;

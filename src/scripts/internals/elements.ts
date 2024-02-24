@@ -13,7 +13,7 @@ export const getElements = () => {
   ) as HTMLElement;
 
   const actionItems = [
-    ...container.querySelectorAll('command-palette-action')
+    ...container.querySelectorAll('command-palette-item')
   ] as HTMLElement[];
 
   const getActionItemsVisible = () => {
