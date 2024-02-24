@@ -1,3 +1,4 @@
+import {navigate} from 'astro/virtual-modules/transitions-router.js';
 import {setCurrentItem, getElements, dispatchSearch} from './internals';
 
 /**
@@ -26,8 +27,9 @@ export const closeCommandPalette = (): void => {
   const {container, input} = getElements();
   setTimeout(() => container.setAttribute('data-visible', 'false'), 150);
   container.style.display = 'none';
-  input.value = '';
   dispatchSearch();
+  input.value = '';
+  navigate('');
 };
 
 export const hideCommandPalette = (): void => {
