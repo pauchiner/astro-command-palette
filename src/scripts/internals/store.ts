@@ -2,10 +2,11 @@ class Store {
   constructor() {
     if (!window._astroCommandPaletteStore) {
       window._astroCommandPaletteStore = {};
+      window._astroCommandPaletteStore.currentRoute = '';
     }
   }
 
-  public setItem = (key: string, data: string) => {
+  public setItem = (key: string, data: any) => {
     try {
       window._astroCommandPaletteStore[key] = data;
     } catch {
@@ -17,7 +18,7 @@ class Store {
 
   public getItem = (key: string) => {
     try {
-      return window._astroCommandPaletteStore[key] as string;
+      return window._astroCommandPaletteStore[key];
     } catch {
       console.error(
         "Something has overwritten the object 'window._astroCommandPaletteStore' which is necessary to use the astro-command-palette"
