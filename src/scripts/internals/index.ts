@@ -1,3 +1,4 @@
+export {default as store} from './store';
 export {getElements} from './elements';
 export {renderItems} from './render';
 export {
