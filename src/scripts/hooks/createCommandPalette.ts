@@ -23,7 +23,7 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
   }
 };
 
-const generateId = () => {
+const createUID = () => {
   return (
     Date.now().toString(36) +
     Math.floor(
@@ -39,7 +39,7 @@ const createCommandPaletteItems = (items: CommandPaletteItemProps[]) => {
   listToAttach.innerText = '';
 
   items.forEach(data => {
-    const item = { ...data, id: generateId() };
+    const item = { ...data, id: createUID() };
     const component = createCommandPaletteItem(item);
     listToAttach.append(component);
     dispatchItemEvent(item);
