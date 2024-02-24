@@ -20,8 +20,8 @@ export const getCurrentItem = () => {
  * @returns void
  */
 export const setCurrentItem = (index: number) => {
-  const {container, getActionItemsVisible} = getElements();
-  const items = getActionItemsVisible();
+  const {container, getItemsVisible} = getElements();
+  const items = getItemsVisible();
 
   let match = false;
   items.forEach((item, _index) => {
@@ -49,8 +49,8 @@ export const setCurrentItem = (index: number) => {
  * @returns void
  */
 export const incrementItem = () => {
-  const {getActionItemsVisible} = getElements();
-  const items = getActionItemsVisible();
+  const {getItemsVisible} = getElements();
+  const items = getItemsVisible();
   const current = getCurrentItem();
 
   if (current >= items.length - 1) setCurrentItem(0);
@@ -63,8 +63,8 @@ export const incrementItem = () => {
  * @returns void
  */
 export const decrementItem = () => {
-  const {getActionItemsVisible} = getElements();
-  const items = getActionItemsVisible();
+  const {getItemsVisible} = getElements();
+  const items = getItemsVisible();
   const current = getCurrentItem();
 
   if (current <= 0) setCurrentItem(items.length - 1);
@@ -76,16 +76,9 @@ export const decrementItem = () => {
  * @returns void
  */
 export const dispatchSearch = () => {
-  const {actionItems, input} = getElements();
+  const {items, input} = getElements();
 
-  /*
-  const data = Array.from(actionItems).map(
-    item => item.querySelector('span')?.innerText.toLowerCase() ?? ''
-  );
-
-  const results = search(data, input.value);
-  */
-  actionItems.forEach((item, _index) => {
+  items.forEach((item, _index) => {
     const text = item.querySelector('span')?.innerText.toLowerCase() ?? '';
 
     if (text.includes(input.value)) {
@@ -103,8 +96,8 @@ export const dispatchSearch = () => {
  * @returns void
  */
 export const dispatchAction = () => {
-  const {getActionItemsVisible} = getElements();
-  const actionItems = getActionItemsVisible();
+  const {getItemsVisible} = getElements();
   const current = getCurrentItem();
-  actionItems[current].click();
+  const items = getItemsVisible();
+  items[current].click();
 };

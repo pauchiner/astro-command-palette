@@ -12,12 +12,12 @@ export const getElements = () => {
     'command-palette'
   ) as HTMLElement;
 
-  const actionItems = [
+  const items = [
     ...container.querySelectorAll('command-palette-item')
   ] as HTMLElement[];
 
-  const getActionItemsVisible = () => {
-    return actionItems.filter(item => {
+  const getItemsVisible = () => {
+    return items.filter(item => {
       return window.getComputedStyle(item).display === 'flex';
     });
   };
@@ -30,9 +30,9 @@ export const getElements = () => {
     container.getAttribute('data-visible') === 'true' ? true : false;
 
   return {
-    getActionItemsVisible,
+    getItemsVisible,
     commandPalette,
-    actionItems,
+    items,
     container,
     isVisible,
     input
