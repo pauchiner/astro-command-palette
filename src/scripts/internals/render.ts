@@ -1,7 +1,7 @@
-import { setCurrentItem } from '.';
-import type { CommandPaletteItem, CommandPalettePage } from '../../types';
-import { closeCommandPalette } from '../command-palette';
-import { getCurrentRoute, navigate } from './navigation';
+import {setCurrentItem} from '.';
+import type {CommandPaletteItem, CommandPalettePage} from '../../types';
+import {closeCommandPalette} from '../command-palette';
+import {getCurrentRoute, navigate} from './navigation';
 import store from './store';
 
 export const renderItems = () => {

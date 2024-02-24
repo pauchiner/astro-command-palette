@@ -3,7 +3,7 @@ import {
   closeCommandPalette,
   hideCommandPalette
 } from './command-palette';
-import { getCurrentRoute, goBack } from './internals/navigation';
+import {getCurrentRoute, goBack} from './internals/navigation';
 import {
   incrementItem,
   dispatchAction,
@@ -56,8 +56,8 @@ const handleKeystrokes = (event: KeyboardEvent) => {
 export const handleKeyboard = (event: KeyboardEvent) => {
   const current = getCurrentRoute();
 
-  const { input, isVisible } = getElements();
-  const { commandPressed, escapePressed, enterPressed, downPressed, upPressed } =
+  const {input, isVisible} = getElements();
+  const {commandPressed, escapePressed, enterPressed, downPressed, upPressed} =
     handleKeystrokes(event);
 
   if (!isVisible && commandPressed) openCommandPalette();

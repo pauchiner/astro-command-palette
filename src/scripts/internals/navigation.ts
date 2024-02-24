@@ -1,4 +1,4 @@
-import { renderItems } from './render';
+import {renderItems} from './render';
 import store from './store';
 
 const STORAGE_KEY = 'currentRoute';

@@ -1,5 +1,5 @@
-import type { CommandPaletteItem } from '../../types';
-import { renderItems } from '../internals/render';
+import type {CommandPaletteItem} from '../../types';
+import {renderItems} from '../internals/render';
 import store from '../internals/store';
 
 const createCommandPaletteItems = (items: CommandPaletteItem[]) => {

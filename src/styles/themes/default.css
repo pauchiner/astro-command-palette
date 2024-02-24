@@ -41,7 +41,8 @@ command-palette-backdrop {
 
 command-palette-list {
   overflow: hidden;
-  scrollbar-color: var(--command-palette-selected) var(--command-palette-background);
+  scrollbar-color: var(--command-palette-selected)
+    var(--command-palette-background);
 }
 
 command-palette-header {
