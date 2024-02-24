@@ -1,6 +1,6 @@
-import type {CommandPaletteAction} from '../types';
+import type {CommandPaletteItem} from '../types';
 
-const createActionItem = (item: CommandPaletteAction) => {
+const createCommandPaletteItem = (item: CommandPaletteItem) => {
   const component = document.createElement(
     'command-palette-action'
   ) as HTMLElement;
@@ -29,4 +29,4 @@ const createActionItem = (item: CommandPaletteAction) => {
   return component;
 };
 
-export default createActionItem;
+export default createCommandPaletteItem;
