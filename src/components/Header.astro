@@ -9,6 +9,7 @@ const {placeholder = 'Search anything here', maxLength = 60} = Astro.props;
 
 <command-palette-header role="searchbox">
   <input
+    autocomplete="off"
     name="Command Palette Input"
     placeholder={placeholder}
     maxlength={maxLength}
