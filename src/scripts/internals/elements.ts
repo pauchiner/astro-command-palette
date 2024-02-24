@@ -16,6 +16,10 @@ export const getElements = () => {
     'command-palette-items'
   ) as HTMLDivElement;
 
+  const backdrop = document.querySelector(
+    'command-palette-backdrop'
+  ) as HTMLDivElement;
+
   const items = [
     ...container.querySelectorAll('command-palette-item')
   ] as HTMLElement[];
@@ -37,6 +41,7 @@ export const getElements = () => {
     getItemsVisible,
     commandPalette,
     listToAttach,
+    backdrop,
     items,
     container,
     isVisible,
