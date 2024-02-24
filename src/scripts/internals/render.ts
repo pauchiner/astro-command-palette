@@ -1,5 +1,6 @@
 import { setCurrentItem } from '.';
 import type { CommandPaletteItem, CommandPalettePage } from '../../types';
+import { closeCommandPalette } from '../command-palette';
 import { getCurrentRoute, navigate } from './navigation';
 import store from './store';
 
@@ -27,6 +28,10 @@ export const renderItems = () => {
     dispatchItemEvent(item);
   });
 
+  console.info(
+    `astro-command-palette: ${itemsToRender.length} items rendered.`
+  );
+
   setCurrentItem(0);
 };
 
@@ -44,11 +49,17 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
     return;
   }
 
-  if (item.handler) element.addEventListener('click', item.handler);
+  if (item.handler)
+    element.addEventListener('click', () => {
+      item.handler();
+      closeCommandPalette();
+    });
+
   if (item.url)
-    element.addEventListener('click', () =>
-      window.open(item.url, '_blank', 'noopener nofollow')
-    );
+    element.addEventListener('click', () => {
+      window.open(item.url, '_blank', 'noopener nofollow');
+      closeCommandPalette();
+    });
 };
 
 const createCommandPaletteItem = (item: CommandPaletteItem) => {
