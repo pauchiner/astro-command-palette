@@ -1,4 +1,4 @@
-import {getElements} from './elements';
+import {store, getElements} from '.';
 
 /**
  * Retrieves the index of the currently selected item in the container.
@@ -6,8 +6,7 @@ import {getElements} from './elements';
  */
 export const getCurrentItem = () => {
   try {
-    const {container} = getElements();
-    return Number(container.getAttribute('data-selected'));
+    return Number(store.getItem('currentSelected'));
   } catch {
     return 0;
   }
@@ -20,7 +19,7 @@ export const getCurrentItem = () => {
  * @returns void
  */
 export const setCurrentItem = (index: number) => {
-  const {container, getItemsVisible} = getElements();
+  const {getItemsVisible} = getElements();
   const items = getItemsVisible();
 
   let match = false;
@@ -40,7 +39,7 @@ export const setCurrentItem = (index: number) => {
     block: 'nearest'
   });
 
-  container.setAttribute('data-selected', index.toString());
+  store.setItem('currentSelected', index);
 };
 
 /**
