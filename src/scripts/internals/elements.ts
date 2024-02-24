@@ -12,6 +12,10 @@ export const getElements = () => {
     'command-palette'
   ) as HTMLElement;
 
+  const listToAttach = document.querySelector(
+    'command-palette-items'
+  ) as HTMLDivElement;
+
   const items = [
     ...container.querySelectorAll('command-palette-item')
   ] as HTMLElement[];
@@ -32,6 +36,7 @@ export const getElements = () => {
   return {
     getItemsVisible,
     commandPalette,
+    listToAttach,
     items,
     container,
     isVisible,

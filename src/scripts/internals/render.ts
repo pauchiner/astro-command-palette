@@ -1,4 +1,4 @@
-import {setCurrentItem} from '.';
+import {getElements, setCurrentItem} from '.';
 import type {CommandPaletteItem, CommandPalettePage} from '../../types';
 import {closeCommandPalette} from '../command-palette';
 import {getCurrentRoute, navigate} from './navigation';
@@ -6,11 +6,9 @@ import store from './store';
 
 export const renderItems = () => {
   const items = store.getItem('items') as CommandPaletteItem[];
+  const {listToAttach} = getElements();
   const current = getCurrentRoute();
 
-  const listToAttach = document.querySelector(
-    'command-palette-items'
-  ) as HTMLDivElement;
   listToAttach.innerText = '';
 
   let itemsToRender = items;
