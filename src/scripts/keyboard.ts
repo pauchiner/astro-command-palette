@@ -1,9 +1,15 @@
-import {openCommandPalette, closeCommandPalette} from './command-palette';
+import {
+  openCommandPalette,
+  closeCommandPalette,
+  hideCommandPalette
+} from './command-palette';
+import { getCurrentRoute, goBack } from './internals/navigation';
 import {
   incrementItem,
   dispatchAction,
   decrementItem,
-  getElements
+  getElements,
+  dispatchSearch
 } from './internals';
 
 const handleKeystrokes = (event: KeyboardEvent) => {
@@ -49,12 +55,24 @@ const handleKeystrokes = (event: KeyboardEvent) => {
 };
 
 export const handleKeyboard = (event: KeyboardEvent) => {
-  const {isVisible} = getElements();
-  const {commandPressed, escapePressed, enterPressed, downPressed, upPressed} =
+  const current = getCurrentRoute();
+
+  const { input, isVisible } = getElements();
+  const { commandPressed, escapePressed, enterPressed, downPressed, upPressed } =
     handleKeystrokes(event);
 
-  if (isVisible && (commandPressed || escapePressed)) closeCommandPalette();
   if (!isVisible && commandPressed) openCommandPalette();
+  if (isVisible && commandPressed) hideCommandPalette();
+
+  if (isVisible && escapePressed) {
+    if (current !== '') {
+      input.value = '';
+      goBack();
+      return;
+    }
+    closeCommandPalette();
+    dispatchSearch();
+  }
 
   if (isVisible) {
     if (downPressed) {
