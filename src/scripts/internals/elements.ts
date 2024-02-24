@@ -14,7 +14,7 @@ export const getElements = () => {
 
   const actionItems = [
     ...container.querySelectorAll('command-palette-action')
-  ] as HTMLButtonElement[];
+  ] as HTMLElement[];
 
   const getActionItemsVisible = () => {
     return actionItems.filter(item => {
