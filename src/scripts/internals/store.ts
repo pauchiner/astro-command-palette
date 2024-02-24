@@ -6,7 +6,7 @@ class Store {
     }
   }
 
-  public setItem = (key: string, data: any) => {
+  public setItem = (key: string, data: unknown) => {
     try {
       window._astroCommandPaletteStore[key] = data;
     } catch {
