@@ -1,14 +1,17 @@
+import { renderItems } from './render';
 import store from './store';
 
 const STORAGE_KEY = 'currentRoute';
 
 const setRoute = (route: string) => {
   store.setItem(STORAGE_KEY, route);
+  renderItems();
 };
 
 export const getCurrentRoute = () => {
   try {
-    return store.getItem(STORAGE_KEY) ?? '';
+    const current = store.getItem(STORAGE_KEY);
+    return String(current) ?? '';
   } catch {
     return '';
   }
