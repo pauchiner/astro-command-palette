@@ -1,4 +1,4 @@
-import { setCurrentItem, getElements } from './internals';
+import { setCurrentItem, getElements, dispatchSearch } from './internals';
 
 /**
  * Opens the command palette by displaying it and setting the current item to the first item.
@@ -27,6 +27,7 @@ export const closeCommandPalette = (): void => {
   setTimeout(() => container.setAttribute('data-visible', 'false'), 150);
   container.style.display = 'none';
   input.value = '';
+  dispatchSearch();
 };
 
 export const hideCommandPalette = (): void => {

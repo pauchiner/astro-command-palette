@@ -8,8 +8,7 @@ import {
   incrementItem,
   dispatchAction,
   decrementItem,
-  getElements,
-  dispatchSearch
+  getElements
 } from './internals';
 
 const handleKeystrokes = (event: KeyboardEvent) => {
@@ -71,7 +70,6 @@ export const handleKeyboard = (event: KeyboardEvent) => {
       return;
     }
     closeCommandPalette();
-    dispatchSearch();
   }
 
   if (isVisible) {
