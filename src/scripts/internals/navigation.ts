@@ -1,9 +1,12 @@
-import {store, renderItems} from '.';
+import {store, renderItems, getElements} from '.';
 
 const STORAGE_KEY = 'currentRoute';
 
 const setRoute = (route: string) => {
+  const {input} = getElements();
+
   store.setItem(STORAGE_KEY, route);
+  input.value = '';
   renderItems();
 };
 
@@ -17,14 +20,7 @@ export const getCurrentRoute = () => {
 };
 
 export const navigate = (route: string) => {
-  const current = getCurrentRoute();
-
-  if (current === '') {
-    setRoute(route);
-    return;
-  }
-
-  setRoute(`${current}/${route}`);
+  setRoute(route);
 };
 
 export const goBack = () => {
