@@ -98,5 +98,6 @@ export const dispatchAction = () => {
   const {getItemsVisible} = getElements();
   const current = getCurrentItem();
   const items = getItemsVisible();
+  if (items.length === 0) return;
   items[current].click();
 };
