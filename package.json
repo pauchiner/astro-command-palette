@@ -23,7 +23,7 @@
     "dev": "cd example && astro dev"
   },
   "devDependencies": {
-    "@astrojs/ts-plugin": "1.5.2",
+    "@astrojs/ts-plugin": "1.5.3",
     "@typescript-eslint/eslint-plugin": "7.1.0",
     "@typescript-eslint/parser": "7.1.0",
     "astro": "4.4.0",

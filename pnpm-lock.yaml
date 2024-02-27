@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@astrojs/ts-plugin':
-    specifier: 1.5.2
-    version: 1.5.2
+    specifier: 1.5.3
+    version: 1.5.3
   '@typescript-eslint/eslint-plugin':
     specifier: 7.1.0
     version: 7.1.0(@typescript-eslint/parser@7.1.0)(eslint@8.56.0)(typescript@5.3.3)
@@ -106,8 +106,8 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/ts-plugin@1.5.2:
-    resolution: {integrity: sha512-ioR5hvGc+77vg52QSTJEvaSe+Ote2TxA+9oCZyvfPWftezyC2J9K80VN9OTYkCbLyvy2RAnHv+Nr5nM/L9UyTg==}
+  /@astrojs/ts-plugin@1.5.3:
+    resolution: {integrity: sha512-exMHUWAa+JxJ1GaOw6TrC/znZMSwuFMaZrtGxjqfdsMnBAVR4WzJbs9560JNAJCxG7HMqpIfVcjqHdQe2oJ9LA==}
     dependencies:
       '@astrojs/compiler': 2.5.3
       '@jridgewell/sourcemap-codec': 1.4.15
