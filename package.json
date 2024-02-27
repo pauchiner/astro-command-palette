@@ -17,6 +17,7 @@
     "astro-component"
   ],
   "scripts": {
+    "test": "vitest",
     "lint": "eslint src",
     "format": "prettier -w .",
     "dev": "cd example && astro dev"
@@ -30,7 +31,8 @@
     "eslint-plugin-astro": "0.31.4",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "vitest": "1.3.1"
   },
   "peerDependencies": {
     "astro": "^3.0.0 || ^4.0.0"
