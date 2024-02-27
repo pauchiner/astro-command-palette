@@ -1,10 +1,10 @@
-import {store, getElements, setCurrentItem, getCurrentRoute, navigate} from '.';
-import type {CommandPaletteItem, CommandPalettePage} from '../../types';
-import {closeCommandPalette} from '../command-palette';
+import { store, getElements, setCurrentItem, getCurrentRoute, navigate } from '.';
+import type { CommandPaletteItem, CommandPalettePage } from '../../types';
+import { closeCommandPalette } from '../command-palette';
 
 export const renderItems = () => {
   const items = store.getItem('items') as CommandPaletteItem[];
-  const {listToAttach} = getElements();
+  const { listToAttach } = getElements();
   const current = getCurrentRoute();
 
   listToAttach.innerText = '';
@@ -32,7 +32,9 @@ export const renderItems = () => {
 };
 
 const dispatchItemEvent = (item: CommandPaletteItem) => {
-  const element = document.querySelector(`#${item.id}`);
+  const element = document.querySelector(
+    `command-palette-item[data-items-uid="${item.id}"]`
+  );
   if (!(element instanceof HTMLElement)) {
     console.error(
       "astro-command-palette: The item can't be event dispatched because is undefined"
@@ -63,8 +65,8 @@ const createCommandPaletteItem = (item: CommandPaletteItem) => {
     'command-palette-item'
   ) as HTMLElement;
 
-  component.id = item.id;
   component.setAttribute('data-selected', (item.selected ?? false).toString());
+  component.setAttribute('data-items-uid', item.id);
 
   component.innerHTML = `
     <style>

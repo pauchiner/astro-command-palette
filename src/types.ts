@@ -29,3 +29,16 @@ export type CommandPalettePage = CommandPaletteBaseItem & {
 };
 
 export type CommandPaletteItem = CommandPaletteAction | CommandPalettePage;
+
+export type CommandPaletteActionProps =
+  | Omit<CommandPaletteButtonAction, 'id'>
+  | Omit<CommandPaletteLinkAction, 'id'>;
+
+type CommandPalettePageProps = Omit<CommandPaletteBaseItem, 'id'> & {
+  type: 'page';
+  actions: CommandPaletteActionProps[];
+};
+
+export type CommandPaletteItemProps =
+  | CommandPaletteActionProps
+  | CommandPalettePageProps;
