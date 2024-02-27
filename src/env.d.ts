@@ -1,4 +1,4 @@
 /// <reference types="astro/client" />
 interface Window {
-  _astroCommandPaletteStore: Record<string, unknown>;
+  ___astro_command_palette___: Record<string, unknown>;
 }
