@@ -1,14 +1,19 @@
 class Store {
+  private readonly initialState = {
+    items: [],
+    currentRoute: '',
+    currentItem: null
+  };
+
   constructor() {
-    if (!window._astroCommandPaletteStore) {
-      window._astroCommandPaletteStore = {};
-      window._astroCommandPaletteStore.currentRoute = '';
+    if (!window.___astro_command_palette___) {
+      window.___astro_command_palette___ = this.initialState;
     }
   }
 
   public setItem = (key: string, data: unknown) => {
     try {
-      window._astroCommandPaletteStore[key] = data;
+      window.___astro_command_palette___[key] = data;
     } catch {
       console.error(
         "Something has overwritten the object 'window._astroCommandPaletteStore' which is necessary to use the astro-command-palette"
@@ -18,7 +23,7 @@ class Store {
 
   public getItem = (key: string) => {
     try {
-      return window._astroCommandPaletteStore[key];
+      return window.___astro_command_palette___[key];
     } catch {
       console.error(
         "Something has overwritten the object 'window._astroCommandPaletteStore' which is necessary to use the astro-command-palette"
@@ -28,7 +33,7 @@ class Store {
 
   public clearItem = (key: string) => {
     try {
-      delete window._astroCommandPaletteStore[key];
+      delete window.___astro_command_palette___[key];
     } catch {
       console.error(
         "Something has overwritten the object 'window._astroCommandPaletteStore' which is necessary to use the astro-command-palette"
