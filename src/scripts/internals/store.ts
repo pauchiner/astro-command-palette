@@ -1,4 +1,7 @@
 class Store {
+  private static instance: Store;
+  private state: Record<string, unknown>;
+
   private readonly initialState = {
     items: [],
     currentRoute: '',
@@ -6,39 +9,26 @@ class Store {
   };
 
   constructor() {
-    if (!window.AstroCommandPalette) {
-      window.AstroCommandPalette = this.initialState;
+    this.state = this.initialState;
+  }
+
+  public static getInstance(): Store {
+    if (!Store.instance) {
+      Store.instance = new Store();
     }
+    return Store.instance;
   }
 
   public setItem = (key: string, data: unknown) => {
-    try {
-      window.AstroCommandPalette[key] = data;
-    } catch {
-      console.error(
-        "Something has overwritten the object 'window.AstroCommandPalette' which is necessary to use the astro-command-palette"
-      );
-    }
+    this.state[key] = data;
   };
 
   public getItem = (key: string) => {
-    try {
-      return window.AstroCommandPalette[key];
-    } catch {
-      console.error(
-        "Something has overwritten the object 'window.AstroCommandPalette' which is necessary to use the astro-command-palette"
-      );
-    }
+    return this.state[key];
   };
 
   public clearItem = (key: string) => {
-    try {
-      delete window.AstroCommandPalette[key];
-    } catch {
-      console.error(
-        "Something has overwritten the object 'window.AstroCommandPalette' which is necessary to use the astro-command-palette"
-      );
-    }
+    delete this.state[key];
   };
 }
 
