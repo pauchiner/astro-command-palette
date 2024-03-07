@@ -1,8 +1,9 @@
 import {
-  navigate,
+  store,
+  renderItems,
   getElements,
-  dispatchSearch,
-  setCurrentItem
+  setCurrentItem,
+  dispatchSearch
 } from './internals';
 
 /**
@@ -12,6 +13,9 @@ import {
  */
 export const openCommandPalette = (): void => {
   const {container, commandPalette, input} = getElements();
+  renderItems();
+
+  if (input.value !== '') dispatchSearch();
 
   container.style.display = 'flex';
   setCurrentItem(0);
@@ -24,17 +28,15 @@ export const openCommandPalette = (): void => {
 };
 
 /**
- * Closes the command palette by hiding it, clearing the input value, and
- * dispatching a search after a short delay.
+ * Closes the command palette by hiding it.
  * @returns void
  */
 export const closeCommandPalette = (): void => {
   const {container, input} = getElements();
   setTimeout(() => container.setAttribute('data-visible', 'false'), 150);
   container.style.display = 'none';
-  dispatchSearch();
+  store.setCurrentRoute('');
   input.value = '';
-  navigate('');
 };
 
 /**

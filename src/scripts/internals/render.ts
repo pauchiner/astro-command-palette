@@ -1,11 +1,11 @@
-import {store, getElements, setCurrentItem, getCurrentRoute, navigate} from '.';
+import {store, getElements, setCurrentItem} from '.';
 import type {CommandPaletteItem, CommandPalettePage} from '../../types';
 import {closeCommandPalette} from '../command-palette';
 
 export const renderItems = () => {
   const items = store.getItems();
   const {listToAttach} = getElements();
-  const current = getCurrentRoute();
+  const current = store.getCurrentRoute();
 
   listToAttach.innerText = '';
 
@@ -43,7 +43,12 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
   }
 
   if (item.type === 'page') {
-    element.addEventListener('click', () => navigate(item.id));
+    element.addEventListener('click', () => {
+      const {input} = getElements();
+      store.setCurrentRoute(item.id);
+      input.value = '';
+      renderItems();
+    });
     return;
   }
 

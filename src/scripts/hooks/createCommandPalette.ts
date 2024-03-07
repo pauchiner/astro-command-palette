@@ -3,7 +3,7 @@ import type {
   CommandPaletteItem,
   CommandPaletteItemProps
 } from '../../types';
-import {store, renderItems} from '../internals';
+import {store} from '../internals';
 
 const assignID = (item: CommandPaletteItemProps) => {
   const id = Math.random().toString(16).slice(2);
@@ -25,7 +25,6 @@ const createCommandPaletteItems = (items: CommandPaletteItemProps[]) => {
   });
 
   store.setItems(data);
-  renderItems();
 };
 
 export default createCommandPaletteItems;

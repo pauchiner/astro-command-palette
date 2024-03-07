@@ -1,8 +1,8 @@
 import type {CommandPaletteItem} from '../../types';
 
 interface State {
-  currentItem: number | null;
   currentRoute: string;
+  currentItem: number | null;
   items: Array<CommandPaletteItem>;
 }
 

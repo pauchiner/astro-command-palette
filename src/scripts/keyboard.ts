@@ -4,12 +4,12 @@ import {
   hideCommandPalette
 } from './command-palette';
 import {
-  getCurrentRoute,
-  goBack,
+  store,
   incrementItem,
   dispatchAction,
   decrementItem,
-  getElements
+  getElements,
+  renderItems
 } from './internals';
 
 const handleKeystrokes = (event: KeyboardEvent) => {
@@ -55,7 +55,7 @@ const handleKeystrokes = (event: KeyboardEvent) => {
 };
 
 export const handleKeyboard = (event: KeyboardEvent) => {
-  const current = getCurrentRoute();
+  const current = store.getCurrentRoute();
 
   const {input, isVisible} = getElements();
   const {commandPressed, escapePressed, enterPressed, downPressed, upPressed} =
@@ -66,8 +66,9 @@ export const handleKeyboard = (event: KeyboardEvent) => {
 
   if (isVisible && escapePressed) {
     if (current !== '') {
+      store.setCurrentRoute('');
       input.value = '';
-      goBack();
+      renderItems();
       return;
     }
     closeCommandPalette();
