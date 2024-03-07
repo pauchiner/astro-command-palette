@@ -16,7 +16,7 @@ class Store {
       window.AstroCommandPalette[key] = data;
     } catch {
       console.error(
-        "Something has overwritten the object 'window._astroCommandPaletteStore' which is necessary to use the astro-command-palette"
+        "Something has overwritten the object 'window.AstroCommandPalette' which is necessary to use the astro-command-palette"
       );
     }
   };
@@ -26,7 +26,7 @@ class Store {
       return window.AstroCommandPalette[key];
     } catch {
       console.error(
-        "Something has overwritten the object 'window._astroCommandPaletteStore' which is necessary to use the astro-command-palette"
+        "Something has overwritten the object 'window.AstroCommandPalette' which is necessary to use the astro-command-palette"
       );
     }
   };
@@ -36,7 +36,7 @@ class Store {
       delete window.AstroCommandPalette[key];
     } catch {
       console.error(
-        "Something has overwritten the object 'window._astroCommandPaletteStore' which is necessary to use the astro-command-palette"
+        "Something has overwritten the object 'window.AstroCommandPalette' which is necessary to use the astro-command-palette"
       );
     }
   };
