@@ -1,10 +1,10 @@
-import { store, getElements, setCurrentItem, getCurrentRoute, navigate } from '.';
-import type { CommandPaletteItem, CommandPalettePage } from '../../types';
-import { closeCommandPalette } from '../command-palette';
+import {store, getElements, setCurrentItem, getCurrentRoute, navigate} from '.';
+import type {CommandPaletteItem, CommandPalettePage} from '../../types';
+import {closeCommandPalette} from '../command-palette';
 
 export const renderItems = () => {
-  const items = store.getItem('items') as CommandPaletteItem[];
-  const { listToAttach } = getElements();
+  const items = store.getItems();
+  const {listToAttach} = getElements();
   const current = getCurrentRoute();
 
   listToAttach.innerText = '';

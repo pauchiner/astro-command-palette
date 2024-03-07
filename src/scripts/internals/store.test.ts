@@ -1,27 +1,27 @@
+import type {CommandPaletteItem} from '../../types';
 import {expect, test} from 'vitest';
 import store from './store';
-import type {CommandPaletteItem} from '../../types';
 
 test('get currentRoute', () => {
-  expect(store.getItem('currentRoute')).toBe('');
+  expect(store.getCurrentRoute()).toBe('');
 });
 
 test('set currentRoute', () => {
-  store.setItem('currentRoute', 'nested-page');
-  expect(store.getItem('currentRoute')).toBe('nested-page');
+  store.setCurrentRoute('nested-page');
+  expect(store.getCurrentRoute()).toBe('nested-page');
 });
 
 test('get currentItem', () => {
-  expect(store.getItem('currentItem')).toBe(null);
+  expect(store.getCurrentItem()).toBe(null);
 });
 
 test('set currentItem', () => {
-  store.setItem('currentItem', 0);
-  expect(store.getItem('currentItem')).toBe(0);
+  store.setCurrentItem(0);
+  expect(store.getCurrentItem()).toBe(0);
 });
 
 test('get items', () => {
-  expect(store.getItem('items')).toStrictEqual([]);
+  expect(store.getItems()).toStrictEqual([]);
 });
 
 test('set items', () => {
@@ -32,6 +32,6 @@ test('set items', () => {
     id: 'b73e51f51be5'
   };
 
-  store.setItem('items', item);
-  expect(store.getItem('items')).toStrictEqual(item);
+  store.setItems([item]);
+  expect(store.getItems()).toStrictEqual([item]);
 });

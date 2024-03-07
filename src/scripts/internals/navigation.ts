@@ -1,22 +1,15 @@
 import {store, renderItems, getElements} from '.';
 
-const STORAGE_KEY = 'currentRoute';
-
 const setRoute = (route: string) => {
   const {input} = getElements();
 
-  store.setItem(STORAGE_KEY, route);
+  store.setCurrentRoute(route);
   input.value = '';
   renderItems();
 };
 
 export const getCurrentRoute = () => {
-  try {
-    const current = store.getItem(STORAGE_KEY);
-    return String(current) ?? '';
-  } catch {
-    return '';
-  }
+  return store.getCurrentRoute();
 };
 
 export const navigate = (route: string) => {

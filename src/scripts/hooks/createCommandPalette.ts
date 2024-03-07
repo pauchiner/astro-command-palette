@@ -3,11 +3,11 @@ import type {
   CommandPaletteItem,
   CommandPaletteItemProps
 } from '../../types';
-import { store, renderItems } from '../internals';
+import {store, renderItems} from '../internals';
 
 const assignID = (item: CommandPaletteItemProps) => {
   const id = Math.random().toString(16).slice(2);
-  return { ...item, id } as CommandPaletteItem;
+  return {...item, id} as CommandPaletteItem;
 };
 
 const assignActionsID = (item: CommandPaletteItemProps) => {
@@ -24,7 +24,7 @@ const createCommandPaletteItems = (items: CommandPaletteItemProps[]) => {
     return assignID(item);
   });
 
-  store.setItem('items', data);
+  store.setItems(data);
   renderItems();
 };
 

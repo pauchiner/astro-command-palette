@@ -1,8 +1,16 @@
+import type {CommandPaletteItem} from '../../types';
+
+interface State {
+  currentItem: number | null;
+  currentRoute: string;
+  items: Array<CommandPaletteItem>;
+}
+
 class Store {
   private static instance: Store;
-  private state: Record<string, unknown>;
+  private state: State;
 
-  private readonly initialState = {
+  private readonly initialState: State = {
     items: [],
     currentRoute: '',
     currentItem: null
@@ -19,19 +27,31 @@ class Store {
     return Store.instance;
   }
 
-  public setItem = (key: string, data: unknown) => {
-    this.state[key] = data;
+  public setItems = (items: Array<CommandPaletteItem>) => {
+    this.state.items = items;
   };
 
-  public getItem = (key: string) => {
-    return this.state[key];
+  public getItems = () => {
+    return this.state.items;
   };
 
-  public clearItem = (key: string) => {
-    delete this.state[key];
+  public setCurrentRoute = (route: string) => {
+    this.state.currentRoute = route;
+  };
+
+  public getCurrentRoute = () => {
+    return this.state.currentRoute;
+  };
+
+  public setCurrentItem = (current: number | null) => {
+    this.state.currentItem = current;
+  };
+
+  public getCurrentItem = () => {
+    return this.state.currentItem;
   };
 }
 
-export const defaultStore = new Store();
+export const defaultStore = Store.getInstance();
 
 export default defaultStore;

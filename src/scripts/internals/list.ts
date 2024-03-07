@@ -5,11 +5,8 @@ import {store, getElements} from '.';
  * @returns The index of the currently selected item, represented as a number. Returns 0 if no item is selected.
  */
 export const getCurrentItem = () => {
-  try {
-    return Number(store.getItem('currentSelected'));
-  } catch {
-    return 0;
-  }
+  const current = store.getCurrentItem();
+  return current ?? 0;
 };
 
 /**
@@ -39,7 +36,7 @@ export const setCurrentItem = (index: number) => {
     block: 'nearest'
   });
 
-  store.setItem('currentSelected', index);
+  store.setCurrentItem(index);
 };
 
 /**
