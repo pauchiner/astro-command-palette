@@ -1,21 +1,42 @@
-import {store, getElements, setCurrentItem} from '.';
+import {store, getElements} from '.';
 import type {CommandPaletteItem, CommandPalettePage} from '../../types';
 import {closeCommandPalette} from '../command-palette';
 
-const getListToAttach = (elementToAttach?: HTMLDivElement) => {
-  if (elementToAttach) {
-    return elementToAttach;
+interface MockOptions {
+  currentRoute?: string;
+  listToAttach?: HTMLDivElement;
+  items?: Array<CommandPaletteItem>;
+}
+
+const getItems = (mockItems?: Array<CommandPaletteItem>) => {
+  if (mockItems) {
+    return mockItems;
+  } else {
+    return store.getItems();
+  }
+};
+
+const getListToAttach = (mockListToAttach?: HTMLDivElement) => {
+  if (mockListToAttach) {
+    return mockListToAttach;
   } else {
     const {listToAttach} = getElements();
     return listToAttach;
   }
 };
 
-export const renderItems = (elementToAttach?: HTMLDivElement) => {
-  const items = store.getItems();
-  const current = store.getCurrentRoute();
+const getCurrentRoute = (mockCurrentRoute?: string) => {
+  if (mockCurrentRoute) {
+    return mockCurrentRoute;
+  } else {
+    return store.getCurrentRoute();
+  }
+};
+export const renderItems = (mockData?: MockOptions) => {
+  const listToAttach = getListToAttach(mockData?.listToAttach);
+  const current = getCurrentRoute(mockData?.currentRoute);
+  const items = getItems(mockData?.items);
 
-  const listToAttach = getListToAttach(elementToAttach);
   listToAttach.innerText = '';
 
   let itemsToRender = items;
@@ -33,9 +54,11 @@ export const renderItems = (elementToAttach?: HTMLDivElement) => {
     dispatchItemEvent(item);
   });
 
+  /*
   console.info(
     `astro-command-palette: ${itemsToRender.length} items rendered.`
   );
+  */
 };
 
 const dispatchItemEvent = (item: CommandPaletteItem) => {
