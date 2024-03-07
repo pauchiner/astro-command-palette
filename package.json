@@ -2,7 +2,7 @@
   "name": "astro-command-palette",
   "description": "A minimal command palette for astro with no dependencies",
   "author": "Pau García Chiner",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "exports": {
