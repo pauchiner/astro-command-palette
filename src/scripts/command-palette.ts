@@ -14,6 +14,7 @@ import {
 export const openCommandPalette = (): void => {
   const {container, commandPalette, input} = getElements();
   renderItems();
+  setCurrentItem(0);
 
   if (input.value !== '') dispatchSearch();
 

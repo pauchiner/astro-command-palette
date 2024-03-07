@@ -2,11 +2,20 @@ import {store, getElements, setCurrentItem} from '.';
 import type {CommandPaletteItem, CommandPalettePage} from '../../types';
 import {closeCommandPalette} from '../command-palette';
 
-export const renderItems = () => {
+const getListToAttach = (elementToAttach?: HTMLDivElement) => {
+  if (elementToAttach) {
+    return elementToAttach;
+  } else {
+    const {listToAttach} = getElements();
+    return listToAttach;
+  }
+};
+
+export const renderItems = (elementToAttach?: HTMLDivElement) => {
   const items = store.getItems();
-  const {listToAttach} = getElements();
   const current = store.getCurrentRoute();
 
+  const listToAttach = getListToAttach(elementToAttach);
   listToAttach.innerText = '';
 
   let itemsToRender = items;
@@ -27,8 +36,6 @@ export const renderItems = () => {
   console.info(
     `astro-command-palette: ${itemsToRender.length} items rendered.`
   );
-
-  setCurrentItem(0);
 };
 
 const dispatchItemEvent = (item: CommandPaletteItem) => {

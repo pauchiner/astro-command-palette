@@ -9,7 +9,8 @@ import {
   dispatchAction,
   decrementItem,
   getElements,
-  renderItems
+  renderItems,
+  setCurrentItem
 } from './internals';
 
 const handleKeystrokes = (event: KeyboardEvent) => {
@@ -69,6 +70,7 @@ export const handleKeyboard = (event: KeyboardEvent) => {
       store.setCurrentRoute('');
       input.value = '';
       renderItems();
+      setCurrentItem(0);
       return;
     }
     closeCommandPalette();
