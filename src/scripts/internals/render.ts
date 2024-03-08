@@ -96,9 +96,7 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
 };
 
 const createCommandPaletteItem = (item: CommandPaletteItem) => {
-  const component = document.createElement(
-    'command-palette-item'
-  ) as HTMLElement;
+  const component = document.createElement('command-palette-item');
 
   component.setAttribute('data-selected', (item.selected ?? false).toString());
   component.setAttribute('data-items-uid', item.id);
