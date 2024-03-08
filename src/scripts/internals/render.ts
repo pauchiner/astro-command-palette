@@ -101,19 +101,6 @@ const createCommandPaletteItem = (item: CommandPaletteItem) => {
   component.setAttribute('data-selected', (item.selected ?? false).toString());
   component.setAttribute('data-items-uid', item.id);
 
-  component.innerHTML = `
-    <style>
-      command-palette-item {
-        width: 100%;
-        height: 3rem;
-        display: flex;
-        padding-left: 1rem;
-        align-items: center;
-        text-decoration: none;
-      }
-    </style>
-  `;
-
   const span = document.createElement('span');
   const text = document.createTextNode(item.name);
   span.appendChild(text);
