@@ -28,7 +28,6 @@ export const getElements = (mockWindow?: Window) => {
     ...container.querySelectorAll('command-palette-item')
   ] as HTMLElement[];
 
-  // TODO: add tests to this function
   const getItemsVisible = () => {
     return items.filter((item: any) => {
       return current.getComputedStyle(item).display === 'flex';
