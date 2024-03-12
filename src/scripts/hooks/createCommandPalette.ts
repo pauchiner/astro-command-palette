@@ -5,23 +5,23 @@ import type {
 } from '../../types';
 import {store} from '../internals';
 
-const assignID = (item: CommandPaletteItemProps) => {
+export const _assignID = (item: CommandPaletteItemProps) => {
   const id = Math.random().toString(16).slice(2);
   return {...item, id} as CommandPaletteItem;
 };
 
-const assignActionsID = (item: CommandPaletteItemProps) => {
-  return assignID(item) as CommandPaletteAction;
+export const _assignActionsID = (item: CommandPaletteItemProps) => {
+  return _assignID(item) as CommandPaletteAction;
 };
 
-const createCommandPaletteItems = (items: CommandPaletteItemProps[]) => {
+export const createCommandPaletteItems = (items: CommandPaletteItemProps[]) => {
   const data = items.map(item => {
     if (item.type === 'page') {
       item.actions = item.actions.map(action => {
-        return assignActionsID(action);
+        return _assignActionsID(action);
       });
     }
-    return assignID(item);
+    return _assignID(item);
   });
 
   store.setItems(data);
