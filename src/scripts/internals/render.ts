@@ -8,15 +8,7 @@ interface MockOptions {
   items?: Array<CommandPaletteItem>;
 }
 
-const getItems = (mockItems?: Array<CommandPaletteItem>) => {
-  if (mockItems) {
-    return mockItems;
-  } else {
-    return store.getItems();
-  }
-};
-
-const getListToAttach = (mockListToAttach?: HTMLDivElement) => {
+const mockListToAttach = (mockListToAttach?: HTMLDivElement) => {
   if (mockListToAttach) {
     return mockListToAttach;
   } else {
@@ -25,17 +17,10 @@ const getListToAttach = (mockListToAttach?: HTMLDivElement) => {
   }
 };
 
-const getCurrentRoute = (mockCurrentRoute?: string) => {
-  if (mockCurrentRoute) {
-    return mockCurrentRoute;
-  } else {
-    return store.getCurrentRoute();
-  }
-};
 export const renderItems = (mockData?: MockOptions) => {
-  const listToAttach = getListToAttach(mockData?.listToAttach);
-  const current = getCurrentRoute(mockData?.currentRoute);
-  const items = getItems(mockData?.items);
+  const current = mockData?.currentRoute ?? store.getCurrentRoute();
+  const listToAttach = mockListToAttach(mockData?.listToAttach);
+  const items = mockData?.items ?? store.getItems();
 
   listToAttach.innerText = '';
 
