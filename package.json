@@ -20,7 +20,8 @@
     "test": "vitest",
     "lint": "eslint src",
     "format": "prettier -w .",
-    "dev": "cd example && astro dev"
+    "dev": "cd example && astro dev",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "1.5.3",
