@@ -4,7 +4,8 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     coverage: {
-      provider: 'istanbul'
+      provider: 'istanbul',
+      exclude: ['**/example/**']
     }
   }
 });
