@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest';
 import {getElements} from './elements';
+import {Window} from 'happy-dom';
 
 const mockDOM = () => {
   // Items
@@ -7,8 +8,8 @@ const mockDOM = () => {
   const listToAttach = document.createElement('command-palette-items');
   for (let index = 0; index < 2; index++) {
     const item = document.createElement('command-palette-item') as HTMLElement;
-    if (index === 0) item.style.display = 'none';
-    else item.style.display = 'flex';
+    if (index === 0) item.style.display = 'flex';
+    else item.style.display = 'none';
     listToAttach.appendChild(item);
     items.push(item);
   }
@@ -38,9 +39,11 @@ const mockDOM = () => {
   container.appendChild(commandPalette);
   container.appendChild(backdrop);
 
-  // Document
-  const mockDocument = document.createElement('div');
-  mockDocument.appendChild(container);
+  // Window
+  const mockWindow = new Window({url: 'http://localhost:1234'});
+  const mockDocument = mockWindow.document;
+  // @ts-ignore
+  mockDocument.body.appendChild(container);
 
   return {
     mockInput: input,
@@ -49,56 +52,63 @@ const mockDOM = () => {
     mockContainer: container,
     mockListToAttach: listToAttach,
     mockCommandPalette: commandPalette,
-    mockDocument
+    mockWindow
   };
 };
 
 describe('getElements', () => {
   test('container', () => {
-    const {mockDocument, mockContainer} = mockDOM();
-    const {container} = getElements(mockDocument);
+    const {mockWindow, mockContainer} = mockDOM();
+    const {container} = getElements(mockWindow);
 
     expect(container).toBe(mockContainer);
   });
 
   test('commandPalette', () => {
-    const {mockDocument, mockCommandPalette} = mockDOM();
-    const {commandPalette} = getElements(mockDocument);
+    const {mockWindow, mockCommandPalette} = mockDOM();
+    const {commandPalette} = getElements(mockWindow);
 
     expect(commandPalette).toBe(mockCommandPalette);
   });
 
   test('backdrop', () => {
-    const {mockDocument, mockBackdrop} = mockDOM();
-    const {backdrop} = getElements(mockDocument);
+    const {mockWindow, mockBackdrop} = mockDOM();
+    const {backdrop} = getElements(mockWindow);
 
     expect(backdrop).toBe(mockBackdrop);
   });
 
   test('listToAttach', () => {
-    const {mockDocument, mockListToAttach} = mockDOM();
-    const {listToAttach} = getElements(mockDocument);
+    const {mockWindow, mockListToAttach} = mockDOM();
+    const {listToAttach} = getElements(mockWindow);
 
     expect(listToAttach).toBe(mockListToAttach);
   });
 
   test('items', () => {
-    const {mockDocument, mockItems} = mockDOM();
-    const {items} = getElements(mockDocument);
+    const {mockWindow, mockItems} = mockDOM();
+    const {items} = getElements(mockWindow);
 
     expect(items).toStrictEqual(mockItems);
   });
 
+  test('getItemsVisible', () => {
+    const {mockWindow} = mockDOM();
+    const {getItemsVisible} = getElements(mockWindow);
+
+    expect(getItemsVisible().length).toBe(1);
+  });
+
   test('input', () => {
-    const {mockDocument, mockInput} = mockDOM();
-    const {input} = getElements(mockDocument);
+    const {mockWindow, mockInput} = mockDOM();
+    const {input} = getElements(mockWindow);
 
     expect(input).toBe(mockInput);
   });
 
   test('isVisible', () => {
-    const {mockDocument, mockContainer} = mockDOM();
-    const {isVisible} = getElements(mockDocument);
+    const {mockWindow, mockContainer} = mockDOM();
+    const {isVisible} = getElements(mockWindow);
 
     expect(isVisible).toBe(
       mockContainer.getAttribute('data-visible') === 'true' ? true : false
