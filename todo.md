@@ -10,7 +10,13 @@
 - [x] Update internals imports
 - [x] Fix mouse exit
 - [x] Move data-selected to the store
-- [ ] Possibility of remove the id of createItems hook
+- [x] Fix issues with the dispatchAction
+- [x] Possibility of remove the id of createItems hook
+- [~] Start adding tests
+- [x] Refactor store
+- [x] Refactor navigation
+- [ ] Refactor renderer
+- [ ] Change the placeholder based on the current page
 - [ ] Add jsdoc to all the necessary functions
 - [ ] Tests
 - [ ] Icons
