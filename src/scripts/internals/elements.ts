@@ -1,24 +1,26 @@
+import {Window} from 'happy-dom';
 /**
  * Retrieves various elements related to the command palette.
  * @returns An object containing references: command palette container, the command palette element,
  * an array of action items, the input element, and a boolean indicating the visibility status of the container.
  */
-export const getElements = (mockDocument?: HTMLDivElement) => {
-  const current = mockDocument ?? document;
+export const getElements = (mockWindow?: Window) => {
+  const current = mockWindow ?? window;
+  const document = current.document;
 
-  const container = current.querySelector(
+  const container = document.querySelector(
     'astro-command-palette'
   ) as HTMLElement;
 
-  const commandPalette = current.querySelector(
+  const commandPalette = document.querySelector(
     'command-palette'
   ) as HTMLElement;
 
-  const listToAttach = current.querySelector(
+  const listToAttach = document.querySelector(
     'command-palette-items'
   ) as HTMLDivElement;
 
-  const backdrop = current.querySelector(
+  const backdrop = document.querySelector(
     'command-palette-backdrop'
   ) as HTMLDivElement;
 
@@ -28,8 +30,8 @@ export const getElements = (mockDocument?: HTMLDivElement) => {
 
   // TODO: add tests to this function
   const getItemsVisible = () => {
-    return items.filter(item => {
-      return window.getComputedStyle(item).display === 'flex';
+    return items.filter((item: any) => {
+      return current.getComputedStyle(item).display === 'flex';
     });
   };
 
