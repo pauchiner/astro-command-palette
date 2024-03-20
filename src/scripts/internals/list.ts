@@ -30,13 +30,14 @@ export const setCurrentItem = (index: number) => {
   });
 
   if (!match) return;
+  store.setCurrentItem(index);
+
+  if (import.meta.env.NODE_ENV === 'test') return;
 
   items[index].scrollIntoView({
     behavior: 'instant',
     block: 'nearest'
   });
-
-  store.setCurrentItem(index);
 };
 
 /**
