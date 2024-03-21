@@ -1,6 +1,6 @@
-import {store, getElements} from '.';
-import type {CommandPaletteItem, CommandPalettePage} from '../../types';
-import {closeCommandPalette} from '../command-palette';
+import { store, getElements } from '.';
+import type { CommandPaletteItem, CommandPalettePage } from '../../types';
+import { closeCommandPalette } from '../command-palette';
 
 interface MockOptions {
   currentRoute?: string;
@@ -12,7 +12,7 @@ const mockListToAttach = (mockListToAttach?: HTMLDivElement) => {
   if (mockListToAttach) {
     return mockListToAttach;
   } else {
-    const {listToAttach} = getElements();
+    const { listToAttach } = getElements();
     return listToAttach;
   }
 };
@@ -38,12 +38,6 @@ export const renderItems = (mockData?: MockOptions) => {
     listToAttach.append(component);
     dispatchItemEvent(item);
   });
-
-  /*
-  console.info(
-    `astro-command-palette: ${itemsToRender.length} items rendered.`
-  );
-  */
 };
 
 const dispatchItemEvent = (item: CommandPaletteItem) => {
@@ -59,7 +53,7 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
 
   if (item.type === 'page') {
     element.addEventListener('click', () => {
-      const {input} = getElements();
+      const { input } = getElements();
       store.setCurrentRoute(item.id);
       input.value = '';
       renderItems();
