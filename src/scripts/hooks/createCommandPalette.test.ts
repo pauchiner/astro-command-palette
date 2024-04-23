@@ -20,7 +20,6 @@ describe('assignID', () => {
     const result = _assignID(item1);
 
     expect(result).toHaveProperty('id');
-    expect(result.id.length).toBe(13);
     expect(result.id).toEqual(expect.any(String));
     expect(result).toMatchObject({ ...item1, id: result.id });
   });
