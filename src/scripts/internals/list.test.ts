@@ -68,6 +68,6 @@ describe.skip('decrementItem', () => {
   });
 });
 
-// describe('dispatchSearch', () => {});
+describe.skip('dispatchSearch', () => {});
 
-// describe('dispatchAction', () => {});
+describe.skip('dispatchAction', () => {});
