@@ -1,14 +1,12 @@
-import {mockWindow} from '../utils';
-
-const current = import.meta.env.NODE_ENV ? mockWindow : window;
-const document = current.document;
-
 /**
  * Retrieves various elements related to the command palette.
  * @returns An object containing references: command palette container, the command palette element,
  * an array of action items, the input element, and a boolean indicating the visibility status of the container.
  */
-export const getElements = () => {
+export const getElements = (mockWindow: any = window) => {
+  const current = mockWindow;
+  const document = current.document;
+
   const container = document.querySelector(
     'astro-command-palette'
   ) as HTMLElement;
