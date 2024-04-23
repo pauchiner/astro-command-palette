@@ -1,4 +1,4 @@
-import { store, getElements } from '.';
+import { store, getElements, setCurrentItem } from '.';
 import type { CommandPaletteItem, CommandPalettePage } from '../../types';
 import { closeCommandPalette } from '../command-palette';
 
@@ -38,6 +38,8 @@ export const renderItems = (mockData?: MockOptions) => {
     listToAttach.append(component);
     dispatchItemEvent(item);
   });
+
+  setCurrentItem(0);
 };
 
 const dispatchItemEvent = (item: CommandPaletteItem) => {
