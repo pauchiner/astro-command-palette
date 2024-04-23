@@ -12,13 +12,12 @@
 - [x] Move data-selected to the store
 - [x] Fix issues with the dispatchAction
 - [x] Possibility of remove the id of createItems hook
-- [~] Start adding tests
+- [~] Tests
 - [x] Refactor store
 - [x] Refactor navigation
 - [ ] Refactor renderer
 - [ ] Change the placeholder based on the current page
 - [ ] Add jsdoc to all the necessary functions
-- [ ] Tests
 - [ ] Icons
 - [ ] Custom keybindings
 - [ ] Custom themes
