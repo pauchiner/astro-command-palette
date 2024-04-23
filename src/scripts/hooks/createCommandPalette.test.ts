@@ -1,6 +1,6 @@
-import { _assignID, createCommandPaletteItems } from './createCommandPalette';
-import type { CommandPaletteItemProps } from '../../types';
-import { describe, expect, it } from 'vitest';
+import {_assignID, createCommandPaletteItems} from './createCommandPalette';
+import type {CommandPaletteItemProps} from '../../types';
+import {describe, expect, it} from 'vitest';
 import store from '../internals/store';
 
 describe('assignID', () => {
@@ -21,7 +21,7 @@ describe('assignID', () => {
 
     expect(result).toHaveProperty('id');
     expect(result.id).toEqual(expect.any(String));
-    expect(result).toMatchObject({ ...item1, id: result.id });
+    expect(result).toMatchObject({...item1, id: result.id});
   });
 
   it('should generate different IDs for different calls', () => {
