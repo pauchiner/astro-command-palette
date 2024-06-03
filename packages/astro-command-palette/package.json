@@ -10,8 +10,14 @@
     "url": "https://github.com/pauchiner/astro-command-palette.git"
   },
   "exports": {
-    ".": "./src/index.ts",
-    "./hooks": "./src/scripts/hooks/index.ts"
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./hooks": {
+      "import": "./src/scripts/hooks/index.ts",
+      "types": "./src/scripts/hooks/index.ts"
+    }
   },
   "keywords": [
     "withastro",
