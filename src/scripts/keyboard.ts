@@ -57,8 +57,8 @@ const handleKeystrokes = (event: KeyboardEvent) => {
 export const handleKeyboard = (event: KeyboardEvent) => {
   const current = store.getCurrentRoute();
 
-  const {commandPalette, input, isVisible} = getElements();
-  const {commandPressed, escapePressed, enterPressed, downPressed, upPressed} =
+  const { commandPalette, input, isVisible } = getElements();
+  const { commandPressed, escapePressed, enterPressed, downPressed, upPressed } =
     handleKeystrokes(event);
 
   if (!isVisible && commandPressed) openCommandPalette();
@@ -69,6 +69,14 @@ export const handleKeyboard = (event: KeyboardEvent) => {
       store.setCurrentRoute('');
       input.value = '';
       renderItems();
+
+      // Pressed Animation
+      commandPalette.style.animationName = 'none';
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          commandPalette.style.animationName = '';
+        }, 0);
+      });
       return;
     }
     closeCommandPalette();
@@ -85,14 +93,15 @@ export const handleKeyboard = (event: KeyboardEvent) => {
     }
     if (enterPressed) {
       event.preventDefault();
-      commandPalette.style.animationName = 'none';
+      dispatchAction();
 
+      // Pressed Animation
+      commandPalette.style.animationName = 'none';
       requestAnimationFrame(() => {
         setTimeout(() => {
           commandPalette.style.animationName = '';
         }, 0);
       });
-      dispatchAction();
     }
   }
 };
