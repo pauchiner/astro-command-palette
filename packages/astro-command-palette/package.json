@@ -1,0 +1,28 @@
+{
+  "name": "astro-command-palette",
+  "description": "A minimal, fast and lightweight command palette for astro with no dependencies",
+  "author": "Pau García Chiner",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./hooks": "./src/scripts/hooks/index.ts"
+  },
+  "keywords": [
+    "withastro",
+    "astro-component"
+  ],
+  "scripts": {
+    "lint": "oxlint src",
+    "format": "prettier -w ."
+  },
+  "devDependencies": {
+    "@astrojs/ts-plugin": "1.8.0",
+    "astro": "4.9.2",
+    "typescript": "5.4.5"
+  },
+  "peerDependencies": {
+    "astro": "^3.0.0 || ^4.0.0 || ^5.0.0"
+  }
+}

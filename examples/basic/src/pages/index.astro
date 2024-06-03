@@ -1,5 +1,5 @@
 ---
-import CommandPalette from '~';
+import CommandPalette from 'astro-command-palette';
 ---
 
 <html lang="en" data-theme="light">
@@ -17,7 +17,7 @@ import CommandPalette from '~';
 </html>
 
 <script>
-  import createCommandPaletteItems from '~/src/scripts/hooks/createCommandPalette';
+  import createCommandPaletteItems from 'astro-command-palette/hooks';
 
   createCommandPaletteItems([
     {
