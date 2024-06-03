@@ -72,6 +72,16 @@ const createCommandPaletteItem = (item: CommandPaletteItem) => {
   component.setAttribute('data-selected', (item.selected ?? false).toString());
   component.setAttribute('data-items-uid', item.id);
 
+  if (item.icon) {
+    const icon = document.createElement('astro-command-palette-icon');
+    icon.style.color = 'var(--command-palette-icons-color)';
+    icon.style.marginRight = '8px';
+    icon.style.height = '20px';
+    icon.style.width = '20px';
+    icon.innerHTML = item.icon;
+    component.appendChild(icon);
+  }
+
   const span = document.createElement('span');
   const text = document.createTextNode(item.name);
   span.appendChild(text);

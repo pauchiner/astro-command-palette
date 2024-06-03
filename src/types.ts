@@ -3,6 +3,7 @@ type CommandPaletteItemType = 'action' | 'page';
 type CommandPaletteBaseItem = {
   id: string;
   name: string;
+  icon?: string;
   selected?: boolean;
   type: CommandPaletteItemType;
 };
