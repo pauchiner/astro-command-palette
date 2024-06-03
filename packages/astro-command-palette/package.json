@@ -15,7 +15,8 @@
   ],
   "scripts": {
     "lint": "oxlint src",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "dev": "cd example && astro dev"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "1.8.0",

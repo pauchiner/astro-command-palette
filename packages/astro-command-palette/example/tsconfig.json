@@ -1,0 +1,8 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "astro-command-palette": "../src/index",
+    "astro-command-palette/hooks": "../src/scripts/hooks/index"
+  }
+}

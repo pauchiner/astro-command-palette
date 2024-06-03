@@ -77,6 +77,10 @@ command-palette {
   -webkit-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
 }
 
+command-palette-body {
+  margin-top: 0 !important;
+}
+
 command-palette-backdrop {
   background: var(--command-palette-backdrop-color);
 }
@@ -116,6 +120,7 @@ command-palette-header input::placeholder {
 }
 
 command-palette-footer {
+  margin-top: 0 !important;
   color: var(--command-palette-footer-text-color);
   background: var(--command-palette-footer-bg-color);
   font-family: var(--command-palette-footer-font-family);
@@ -130,14 +135,19 @@ command-palette-footer {
   }
 }
 
+command-palette-footer * {
+  margin-top: 0 !important;
+}
+
 command-palette-item {
   width: 100%;
   height: 3rem;
-  display: flex;
+  display: flex !important;
   padding-left: 1rem;
-  align-items: center;
+  align-items: center !important;
   text-decoration: none;
   border: none;
+  margin-top: 0 !important;
   color: var(--command-palette-items-text-color);
   font-size: var(--command-palette-items-font-size);
   font-family: var(--command-palette-items-font-family);
