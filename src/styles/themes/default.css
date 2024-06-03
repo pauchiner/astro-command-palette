@@ -1,76 +1,72 @@
-/*-------Colors-------*/
+/*-------Properties-------*/
+:root {
+  /* General */
+  --command-palette-bg-color: #d4d4d499;
+  --command-palette-border-radius: 1rem;
+  --command-palette-border-color: #a3a3a3;
+  --command-palette-backdrop-color: rgb(0 0 0 / 0.1);
 
-@media (prefers-color-scheme: light) {
-  :root {
-    /* General */
-    --command-palette-bg-color: #d6d3d1;
-    --command-palette-border-radius: 1rem;
-    --command-palette-border-color: #a8a29e;
-    --command-palette-backdrop-color: rgb(0 0 0 / 0.1);
+  /* Header */
+  --command-palette-header-font-size: 1rem;
+  --command-palette-header-bg-color: #d4d4d499;
+  --command-palette-header-text-color: #0a0a0a;
+  --command-palette-header-font-family: monospace;
+  --command-palette-header-placeholder-color: #737373;
 
-    /* Header */
-    --command-palette-header-font-size: 1rem;
-    --command-palette-header-bg-color: #d6d3d1;
-    --command-palette-header-text-color: #0c0a09;
-    --command-palette-header-font-family: monospace;
-    --command-palette-header-placeholder-color: #57534e;
+  /* Items */
+  --command-palette-icons-color: #262626;
+  --command-palette-items-selected: #a3a3a399;
+  --command-palette-items-font-size: 0.9rem;
+  --command-palette-items-text-color: #0a0a0a;
+  --command-palette-items-font-family: system-ui, sans-serif;
 
-    /* Items */
-    --command-palette-icons-color: #57534e;
-    --command-palette-items-selected: #a8a29e;
-    --command-palette-items-font-size: 0.9rem;
-    --command-palette-items-text-color: #0c0a09;
-    --command-palette-items-font-family: system-ui, sans-serif;
+  /* Footer */
+  --command-palette-footer-bg-color: #d4d4d499;
+  --command-palette-keybinds-bg-color: #a3a3a3;
+  --command-palette-footer-text-color: #737373;
+  --command-palette-footer-font-family: monospace;
 
-    /* Footer */
-    --command-palette-footer-bg-color: #d6d3d1;
-    --command-palette-keybinds-bg-color: #a8a29e;
-    --command-palette-footer-text-color: #57534e;
-    --command-palette-footer-font-family: monospace;
-
-    --command-palette-keybinds-text-color: #57534e;
-    --command-palette-keybinds-font-family: monospace;
-    --command-palette-keybinds-border-radius: 0.25rem;
-  }
+  --command-palette-keybinds-text-color: #262626;
+  --command-palette-keybinds-font-family: monospace;
+  --command-palette-keybinds-border-radius: 0.25rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* General */
-    --command-palette-bg-color: #1c1917;
-    --command-palette-border-radius: 1rem;
-    --command-palette-border-color: #292524;
-    --command-palette-backdrop-color: rgb(0 0 0 / 0.1);
+[data-theme='dark'] {
+  /* General */
+  --command-palette-bg-color: #1c191799;
+  --command-palette-border-radius: 1rem;
+  --command-palette-border-color: #292524;
+  --command-palette-backdrop-color: rgb(0 0 0 / 0.1);
 
-    /* Header */
-    --command-palette-header-font-size: 1rem;
-    --command-palette-header-bg-color: #1c1917;
-    --command-palette-header-text-color: #fafaf9;
-    --command-palette-header-font-family: monospace;
-    --command-palette-header-placeholder-color: #a8a29e;
+  /* Header */
+  --command-palette-header-font-size: 1rem;
+  --command-palette-header-bg-color: #1c191799;
+  --command-palette-header-text-color: #fafaf9;
+  --command-palette-header-font-family: monospace;
+  --command-palette-header-placeholder-color: #a8a29e;
 
-    /* Items */
-    --command-palette-icons-color: #a8a29e;
-    --command-palette-items-selected: #292524;
-    --command-palette-items-font-size: 0.9rem;
-    --command-palette-items-text-color: #fafaf9;
-    --command-palette-items-font-family: system-ui, sans-serif;
+  /* Items */
+  --command-palette-icons-color: #a8a29e;
+  --command-palette-items-selected: #29252499;
+  --command-palette-items-font-size: 0.9rem;
+  --command-palette-items-text-color: #fafaf9;
+  --command-palette-items-font-family: system-ui, sans-serif;
 
-    /* Footer */
-    --command-palette-footer-bg-color: #1c1917;
-    --command-palette-keybinds-bg-color: #292524;
-    --command-palette-footer-text-color: #a8a29e;
-    --command-palette-footer-font-family: monospace;
+  /* Footer */
+  --command-palette-footer-bg-color: #1c191799;
+  --command-palette-keybinds-bg-color: #292524;
+  --command-palette-footer-text-color: #a8a29e;
+  --command-palette-footer-font-family: monospace;
 
-    --command-palette-keybinds-text-color: #a8a29e;
-    --command-palette-keybinds-font-family: monospace;
-    --command-palette-keybinds-border-radius: 0.25rem;
-  }
+  --command-palette-keybinds-text-color: #a8a29e;
+  --command-palette-keybinds-font-family: monospace;
+  --command-palette-keybinds-border-radius: 0.25rem;
 }
 
 /*-------Styles-------*/
 
 command-palette {
+  backdrop-filter: blur(15px);
   background: var(--command-palette-bg-color);
   color: var(--command-palette-items-text-color);
   border-radius: var(--command-palette-border-radius);
@@ -89,8 +85,11 @@ command-palette-list {
   overflow: hidden;
   border-top: 1px solid var(--command-palette-border-color);
   border-bottom: 1px solid var(--command-palette-border-color);
-  scrollbar-color: var(--command-palette-items-selected)
-    var(--command-palette-bg-color);
+  scrollbar-color: var(--command-palette-items-selected) var(--command-palette-bg-color);
+}
+
+command-palette-icon {
+  fill: var(--command-palette-icons-color);
 }
 
 command-palette-header {
