@@ -17,27 +17,23 @@
     "astro-component"
   ],
   "scripts": {
-    "test": "vitest",
     "lint": "eslint src",
     "format": "prettier -w .",
-    "dev": "cd example && astro dev",
-    "test:coverage": "vitest run --coverage"
+    "dev": "cd example && astro dev"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "1.5.3",
     "@typescript-eslint/eslint-plugin": "7.1.0",
     "@typescript-eslint/parser": "7.1.0",
-    "@vitest/coverage-istanbul": "1.3.1",
     "astro": "4.4.5",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "0.31.4",
-    "happy-dom": "13.6.2",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
-    "typescript": "5.3.3",
-    "vitest": "1.3.1"
+    "typescript": "5.3.3"
   },
   "peerDependencies": {
     "astro": "^3.0.0 || ^4.0.0"
-  }
+  },
+  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195"
 }
