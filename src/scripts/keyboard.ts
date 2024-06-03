@@ -57,7 +57,7 @@ const handleKeystrokes = (event: KeyboardEvent) => {
 export const handleKeyboard = (event: KeyboardEvent) => {
   const current = store.getCurrentRoute();
 
-  const {input, isVisible} = getElements();
+  const {commandPalette, input, isVisible} = getElements();
   const {commandPressed, escapePressed, enterPressed, downPressed, upPressed} =
     handleKeystrokes(event);
 
@@ -85,6 +85,13 @@ export const handleKeyboard = (event: KeyboardEvent) => {
     }
     if (enterPressed) {
       event.preventDefault();
+      commandPalette.style.animationName = 'none';
+
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          commandPalette.style.animationName = '';
+        }, 0);
+      });
       dispatchAction();
     }
   }

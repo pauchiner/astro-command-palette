@@ -30,7 +30,7 @@ command-palette {
   margin-inline: 10px;
   border-radius: 0.5rem;
   background: var(--command-palette-background);
-  animation: fade 150ms ease-out;
+  animation: pressed 150ms ease-in;
   box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.25);
 }
@@ -41,8 +41,7 @@ command-palette-backdrop {
 
 command-palette-list {
   overflow: hidden;
-  scrollbar-color: var(--command-palette-selected)
-    var(--command-palette-background);
+  scrollbar-color: var(--command-palette-selected) var(--command-palette-background);
 }
 
 command-palette-header {
@@ -103,16 +102,16 @@ command-palette-item[data-selected='true'] {
 
 /*-----Animations-----*/
 
-@keyframes fade {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-    transform: translateY(5px);
+@keyframes pressed {
+  0% {
+    transform: scale(1);
   }
 
-  to {
-    opacity: 1;
+  50% {
+    transform: scale(0.98);
+  }
+
+  100% {
     transform: scale(1);
-    transform: translateY(0);
   }
 }
