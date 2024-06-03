@@ -1,18 +1,44 @@
 {
   "name": "astro-command-palette",
-  "private": true,
+  "description": "A minimal, fast and lightweight command palette for astro with no dependencies",
+  "author": "Pau García Chiner",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pauchiner/astro-command-palette.git"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./hooks": {
+      "import": "./src/scripts/hooks/index.ts",
+      "types": "./src/scripts/hooks/index.ts"
+    }
+  },
+  "keywords": [
+    "withastro",
+    "astro-component"
+  ],
   "scripts": {
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "turbo format",
-    "build": "turbo build --cache-dir=.turbo"
+    "lint": "oxlint src",
+    "format": "prettier -w .",
+    "dev": "cd example && astro dev"
   },
   "devDependencies": {
+    "@astrojs/ts-plugin": "1.8.0",
+    "astro": "4.9.2",
     "eslint-plugin-astro": "1.2.0",
     "oxlint": "0.4.2",
     "prettier": "3.3.0",
     "prettier-plugin-astro": "0.13.0",
-    "turbo": "1.13.3"
+    "typescript": "5.4.5"
+  },
+  "peerDependencies": {
+    "astro": "^3.0.0 || ^4.0.0 || ^5.0.0"
   },
   "packageManager": "pnpm@9.1.1"
 }
