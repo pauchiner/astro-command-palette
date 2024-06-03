@@ -3,10 +3,12 @@ import type {CommandPaletteItem, CommandPalettePage} from '../../types';
 import {closeCommandPalette} from '../command-palette';
 
 export const renderItems = () => {
+  const defaultPlaceholder = store.getDefaultPlaceholder();
+  const {listToAttach, input} = getElements();
   const current = store.getCurrentRoute();
-  const {listToAttach} = getElements();
   const items = store.getItems();
 
+  if (defaultPlaceholder === '') store.setDefaultPlaceholder(input.placeholder);
   listToAttach.innerText = '';
 
   let itemsToRender = items;
@@ -16,6 +18,9 @@ export const renderItems = () => {
     )[0] as CommandPalettePage;
 
     itemsToRender = page.actions;
+    input.placeholder = page.name;
+  } else {
+    if (defaultPlaceholder !== '') input.placeholder = defaultPlaceholder;
   }
 
   itemsToRender.forEach(item => {

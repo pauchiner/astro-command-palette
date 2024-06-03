@@ -3,6 +3,7 @@ import type {CommandPaletteItem} from '../../types';
 interface State {
   currentRoute: string;
   currentItem: number | null;
+  defaultPlaceholder: string;
   items: Array<CommandPaletteItem>;
 }
 
@@ -13,7 +14,8 @@ class Store {
   private readonly initialState: State = {
     items: [],
     currentRoute: '',
-    currentItem: null
+    currentItem: null,
+    defaultPlaceholder: ''
   };
 
   constructor() {
@@ -45,6 +47,14 @@ class Store {
 
   public setCurrentItem = (current: number | null) => {
     this.state.currentItem = current;
+  };
+
+  public setDefaultPlaceholder = (value: string) => {
+    this.state.defaultPlaceholder = value;
+  };
+
+  public getDefaultPlaceholder = () => {
+    return this.state.defaultPlaceholder;
   };
 
   public getCurrentItem = () => {
