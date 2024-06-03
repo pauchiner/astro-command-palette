@@ -2,25 +2,10 @@ import {store, getElements, setCurrentItem} from '.';
 import type {CommandPaletteItem, CommandPalettePage} from '../../types';
 import {closeCommandPalette} from '../command-palette';
 
-interface MockOptions {
-  currentRoute?: string;
-  listToAttach?: HTMLDivElement;
-  items?: Array<CommandPaletteItem>;
-}
-
-const mockListToAttach = (mockListToAttach?: HTMLDivElement) => {
-  if (mockListToAttach) {
-    return mockListToAttach;
-  } else {
-    const {listToAttach} = getElements();
-    return listToAttach;
-  }
-};
-
-export const renderItems = (mockData?: MockOptions) => {
-  const current = mockData?.currentRoute ?? store.getCurrentRoute();
-  const listToAttach = mockListToAttach(mockData?.listToAttach);
-  const items = mockData?.items ?? store.getItems();
+export const renderItems = () => {
+  const current = store.getCurrentRoute();
+  const {listToAttach} = getElements();
+  const items = store.getItems();
 
   listToAttach.innerText = '';
 
