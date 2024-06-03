@@ -17,17 +17,15 @@
     "astro-component"
   ],
   "scripts": {
-    "lint": "eslint src",
+    "lint": "oxlint src",
     "format": "prettier -w .",
     "dev": "cd example && astro dev"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "1.8.0",
-    "@typescript-eslint/eslint-plugin": "7.1.0",
-    "@typescript-eslint/parser": "7.1.0",
     "astro": "4.9.2",
-    "eslint": "8.57.0",
-    "eslint-plugin-astro": "0.31.4",
+    "eslint-plugin-astro": "1.2.0",
+    "oxlint": "0.4.2",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
     "typescript": "5.3.3"
