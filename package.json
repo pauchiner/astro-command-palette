@@ -28,7 +28,7 @@
     "oxlint": "0.4.2",
     "prettier": "3.3.0",
     "prettier-plugin-astro": "0.13.0",
-    "typescript": "5.3.3"
+    "typescript": "5.4.5"
   },
   "peerDependencies": {
     "astro": "^3.0.0 || ^4.0.0"
