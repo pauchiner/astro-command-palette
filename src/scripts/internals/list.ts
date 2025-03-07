@@ -106,9 +106,9 @@ export function dispatchAction() {
   items[current].click();
 }
 function matchTag(tagList: string | undefined, value: string): boolean {
-  if (value.startsWith('#')) {
+  if (tagList && value.startsWith('#')) {
     value = value.substring(1); // name of tag
-    const tags = tagList?.split('|');
+    const tags = tagList.split('|');
     if (tags && tags.length > 0) {
       return tags.some(tag => tag.toLowerCase().includes(value));
     }
