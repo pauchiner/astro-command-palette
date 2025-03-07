@@ -1,8 +1,10 @@
-import {store, getElements, setCurrentItem} from '.';
 import type {CommandPaletteItem, CommandPalettePage} from '../../types';
 import {closeCommandPalette} from '../command-palette';
+import {getElements} from './elements';
+import {setCurrentItem} from './list';
+import store from './store';
 
-export const renderItems = () => {
+export function renderItems() {
   const defaultPlaceholder = store.getDefaultPlaceholder();
   const {listToAttach, input} = getElements();
   const current = store.getCurrentRoute();
@@ -30,7 +32,7 @@ export const renderItems = () => {
   });
 
   setCurrentItem(0);
-};
+}
 
 const dispatchItemEvent = (item: CommandPaletteItem) => {
   const element = document.querySelector(
@@ -61,7 +63,7 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
 
   if (item.url)
     element.addEventListener('click', () => {
-      window.open(item.url, '_blank', 'noopener nofollow');
+      window.open(item.url, '_self');
       closeCommandPalette();
     });
 };

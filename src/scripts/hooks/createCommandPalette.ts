@@ -3,11 +3,11 @@ import type {
   CommandPaletteItem,
   CommandPaletteItemProps
 } from '../../types';
-import { store } from '../internals';
+import store from '../internals/store';
 
 export const _assignID = (item: CommandPaletteItemProps) => {
   const id = Math.random().toString(16).slice(2);
-  return { ...item, id } as CommandPaletteItem;
+  return {...item, id} as CommandPaletteItem;
 };
 
 export const _assignActionsID = (item: CommandPaletteItemProps) => {
@@ -27,7 +27,6 @@ export const createCommandPaletteItems = (items: CommandPaletteItemProps[]) => {
   });
 
   store.setItems(data);
-  console.log(store.getItems());
 };
 
 const defaultItems: CommandPaletteItemProps[] = [
@@ -80,6 +79,4 @@ const defaultItems: CommandPaletteItemProps[] = [
       }
     ]
   }
-]
-
-export default createCommandPaletteItems;
+];

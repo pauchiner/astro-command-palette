@@ -1,13 +1,14 @@
-import {store, getElements} from '.';
+import store from './store';
+import {getElements} from './elements';
 
 /**
  * Retrieves the index of the currently selected item in the container.
  * @returns The index of the currently selected item, represented as a number. Returns 0 if no item is selected.
  */
-export const getCurrentItem = () => {
+export function getCurrentItem() {
   const current = store.getCurrentItem();
   return current ?? 0;
-};
+}
 
 /**
  * Sets the current item in the command palette based on the given index.
@@ -15,7 +16,7 @@ export const getCurrentItem = () => {
  * @remarks If the index is out of range, it will not be selected.
  * @returns void
  */
-export const setCurrentItem = (index: number) => {
+export function setCurrentItem(index: number) {
   const {getItemsVisible} = getElements();
   const items = getItemsVisible();
 
@@ -38,64 +39,60 @@ export const setCurrentItem = (index: number) => {
     behavior: 'instant',
     block: 'nearest'
   });
-};
+}
 
 /**
  * Increments the currently selected item in the command palette by one.
  * If the last item is reached, it wraps around to the first item.
  * @returns void
  */
-export const incrementItem = () => {
+export function incrementItem() {
   const {getItemsVisible} = getElements();
   const items = getItemsVisible();
   const current = getCurrentItem();
 
   if (current >= items.length - 1) setCurrentItem(0);
   else setCurrentItem(current + 1);
-};
+}
 
 /**
  * Decrements the currently selected item in the command palette by one.
  * If the first item is reached, it wraps around to the last item.
  * @returns void
  */
-export const decrementItem = () => {
+export function decrementItem() {
   const {getItemsVisible} = getElements();
   const items = getItemsVisible();
   const current = getCurrentItem();
 
   if (current <= 0) setCurrentItem(items.length - 1);
   else setCurrentItem(current - 1);
-};
+}
 
 /**
  * Dispatches a search event by filtering command palette items based on the input query.
  * @returns void
  */
-export const dispatchSearch = () => {
+export function dispatchSearch() {
   const {items, input} = getElements();
+  const value = input.value.toLowerCase();
 
-  items.forEach((item, _index) => {
+  for (let item of items) {
     const text = item.querySelector('span')?.innerText.toLowerCase() ?? '';
-
-    if (text.includes(input.value)) {
-      item.style.display = 'flex';
-    } else {
-      item.style.display = 'none';
-    }
-  });
+    item.style.display = text.includes(value) ? 'flex' : 'none';
+  }
   setCurrentItem(0);
-};
+}
 
 /**
  * Dispatches the action associated with the currently selected item in the command palette.
  * This typically involves simulating a click event on the selected item.
  * @returns void
  */
-export const dispatchAction = () => {
+export function dispatchAction() {
   const {getItemsVisible} = getElements();
   const current = getCurrentItem();
   const items = getItemsVisible();
   if (items.length === 0) return;
   items[current].click();
-};
+}

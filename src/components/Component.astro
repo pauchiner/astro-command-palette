@@ -4,46 +4,54 @@ import Backdrop from './Backdrop.astro';
 import Footer from './Footer.astro';
 import Header from './Header.astro';
 import List from './List.astro';
+
+interface Props {
+	placeholder?: string;
+	maxLength?: number;
+}
 ---
 
 <astro-command-palette data-visible="false" role="combobox">
-  <command-palette>
-    <Header />
-    <command-palette-body>
-      <List />
-      <Footer />
-    </command-palette-body>
-  </command-palette>
-  <Backdrop />
+	<command-palette>
+		<Header
+			maxLength={Astro.props.maxLength}
+			placeholder={Astro.props.placeholder}
+		/>
+		<command-palette-body>
+			<List />
+			<Footer />
+		</command-palette-body>
+	</command-palette>
+	<Backdrop />
 </astro-command-palette>
 
 <script src="../scripts/index.ts"></script>
 
 <style>
-  astro-command-palette {
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: fixed;
-    z-index: 999999;
-    box-sizing: border-box;
-    justify-content: center;
-  }
+	astro-command-palette {
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		display: none;
+		position: fixed;
+		z-index: 999999;
+		box-sizing: border-box;
+		justify-content: center;
+	}
 
-  command-palette-body {
-    position: relative;
-    width: 40rem;
-  }
+	command-palette-body {
+		position: relative;
+		width: 40rem;
+	}
 
-  command-palette {
-    top: 36dvh;
-    z-index: 10;
-    width: 40rem;
-    display: flex;
-    padding-top: 4rem;
-    position: absolute;
-    align-items: center;
-    flex-direction: column;
-  }
+	command-palette {
+		top: 36dvh;
+		z-index: 10;
+		width: 40rem;
+		display: flex;
+		padding-top: 4rem;
+		position: absolute;
+		align-items: center;
+		flex-direction: column;
+	}
 </style>

@@ -3,14 +3,10 @@ import {
   closeCommandPalette,
   hideCommandPalette
 } from './command-palette';
-import {
-  store,
-  incrementItem,
-  dispatchAction,
-  decrementItem,
-  getElements,
-  renderItems
-} from './internals';
+import {getElements} from './internals/elements';
+import {incrementItem, decrementItem, dispatchAction} from './internals/list';
+import {renderItems} from './internals/render';
+import store from './internals/store';
 
 const handleKeystrokes = (event: KeyboardEvent) => {
   /*
@@ -57,8 +53,8 @@ const handleKeystrokes = (event: KeyboardEvent) => {
 export const handleKeyboard = (event: KeyboardEvent) => {
   const current = store.getCurrentRoute();
 
-  const { commandPalette, input, isVisible } = getElements();
-  const { commandPressed, escapePressed, enterPressed, downPressed, upPressed } =
+  const {commandPalette, input, isVisible} = getElements();
+  const {commandPressed, escapePressed, enterPressed, downPressed, upPressed} =
     handleKeystrokes(event);
 
   if (!isVisible && commandPressed) openCommandPalette();

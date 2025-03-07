@@ -1,10 +1,7 @@
-import {
-  store,
-  renderItems,
-  getElements,
-  setCurrentItem,
-  dispatchSearch
-} from './internals';
+import {getElements} from './internals/elements';
+import {setCurrentItem, dispatchSearch} from './internals/list';
+import {renderItems} from './internals/render';
+import store from './internals/store';
 
 /**
  * Opens the command palette by displaying it, setting the current item to the
