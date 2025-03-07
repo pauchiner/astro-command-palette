@@ -46,13 +46,11 @@ export function setCurrentItem(index: number) {
  * If the last item is reached, it wraps around to the first item.
  * @returns void
  */
-export function incrementItem() {
+export function incrementItem(n: number = 1) {
   const {getItemsVisible} = getElements();
   const items = getItemsVisible();
-  const current = getCurrentItem();
-
-  if (current >= items.length - 1) setCurrentItem(0);
-  else setCurrentItem(current + 1);
+  const current = (getCurrentItem() + n) % items.length;
+  setCurrentItem(current < 0 ? items.length - current : current);
 }
 
 /**
@@ -60,13 +58,8 @@ export function incrementItem() {
  * If the first item is reached, it wraps around to the last item.
  * @returns void
  */
-export function decrementItem() {
-  const {getItemsVisible} = getElements();
-  const items = getItemsVisible();
-  const current = getCurrentItem();
-
-  if (current <= 0) setCurrentItem(items.length - 1);
-  else setCurrentItem(current - 1);
+export function decrementItem(n: number = 1) {
+  incrementItem(-n);
 }
 
 /**
