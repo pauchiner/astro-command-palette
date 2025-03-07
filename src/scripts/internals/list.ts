@@ -98,6 +98,7 @@ export function dispatchAction() {
   if (items.length === 0) return;
   items[current].click();
 }
+
 function matchTag(tagList: string | undefined, value: string): boolean {
   if (tagList && value.startsWith('#')) {
     value = value.substring(1); // name of tag

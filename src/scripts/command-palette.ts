@@ -18,9 +18,12 @@ export function openCommandPalette(): void {
   container.style.display = 'flex';
   setCurrentItem(0);
 
-  commandPalette.addEventListener('animationend', () => {
-    container.setAttribute('data-visible', 'true');
-  });
+  commandPalette.addEventListener('animationend', () =>
+    container.setAttribute('data-visible', 'true')
+  );
+
+  // backup in case the event doesn't fire
+  setTimeout(() => container.setAttribute('data-visible', 'true'), 200);
 
   input.focus();
 }

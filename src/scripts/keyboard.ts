@@ -59,8 +59,15 @@ export function handleKeyboard(event: KeyboardEvent) {
   const current = store.getCurrentRoute();
 
   const {commandPalette, input, isVisible} = getElements();
-  const {commandPressed, escapePressed, enterPressed, downPressed, upPressed, pageDownPressed, pageUpPressed} =
-    handleKeystrokes(event);
+  const {
+    commandPressed,
+    escapePressed,
+    enterPressed,
+    downPressed,
+    upPressed,
+    pageDownPressed,
+    pageUpPressed
+  } = handleKeystrokes(event);
 
   if (!isVisible && commandPressed) openCommandPalette();
   if (isVisible && commandPressed) hideCommandPalette();

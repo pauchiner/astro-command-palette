@@ -37,7 +37,7 @@ export const getElements = (mockWindow: any = window) => {
   ) as HTMLInputElement;
 
   const isVisible =
-    container.getAttribute('data-visible') === 'true' ? true : false;
+    container.getAttribute('data-visible') === 'true';
 
   return {
     getItemsVisible,
