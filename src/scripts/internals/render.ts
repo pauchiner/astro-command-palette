@@ -25,22 +25,22 @@ export function renderItems() {
     if (defaultPlaceholder !== '') input.placeholder = defaultPlaceholder;
   }
 
-  itemsToRender.forEach(item => {
+  for (const item of itemsToRender) {
     const component = createCommandPaletteItem(item);
     listToAttach.append(component);
     dispatchItemEvent(item);
-  });
+  }
 
   setCurrentItem(0);
 }
 
-const dispatchItemEvent = (item: CommandPaletteItem) => {
+function dispatchItemEvent(item: CommandPaletteItem) {
   const element = document.querySelector(
     `command-palette-item[data-items-uid="${item.id}"]`
   );
   if (!(element instanceof HTMLElement)) {
     console.error(
-      "astro-command-palette: The item can't be event dispatched because is undefined"
+      "astro-command-palette: The item can't be event dispatched because it is undefined"
     );
     return;
   }
@@ -66,9 +66,9 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
       window.open(item.url, '_self');
       closeCommandPalette();
     });
-};
+}
 
-const createCommandPaletteItem = (item: CommandPaletteItem) => {
+function createCommandPaletteItem(item: CommandPaletteItem) {
   const component = document.createElement('command-palette-item');
 
   component.setAttribute('data-selected', (item.selected ?? false).toString());
@@ -89,5 +89,9 @@ const createCommandPaletteItem = (item: CommandPaletteItem) => {
   span.appendChild(text);
   component.appendChild(span);
 
+  if (item.tags && item.tags.length > 0) {
+    component.dataset.tags = item.tags.join('|');
+  }
+
   return component;
-};
+}

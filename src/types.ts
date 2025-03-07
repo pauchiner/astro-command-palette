@@ -3,6 +3,7 @@ export type CommandPaletteItemType = 'action' | 'page';
 export type CommandPaletteBaseItem = {
   id: string;
   name: string;
+  tags?: string[];
   icon?: string;
   selected?: boolean;
   type: CommandPaletteItemType;

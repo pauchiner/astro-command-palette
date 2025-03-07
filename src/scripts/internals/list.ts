@@ -79,7 +79,16 @@ export function dispatchSearch() {
 
   for (let item of items) {
     const text = item.querySelector('span')?.innerText.toLowerCase() ?? '';
-    item.style.display = text.includes(value) ? 'flex' : 'none';
+
+    const tokens = value.split(' ').filter(x => !!x);
+
+    const isMatch = tokens.every(token =>
+      token.startsWith('#')
+        ? matchTag(item.dataset.tags, token)
+        : text.includes(token)
+    );
+
+    item.style.display = isMatch ? 'flex' : 'none';
   }
   setCurrentItem(0);
 }
@@ -95,4 +104,14 @@ export function dispatchAction() {
   const items = getItemsVisible();
   if (items.length === 0) return;
   items[current].click();
+}
+function matchTag(tagList: string | undefined, value: string): boolean {
+  if (value.startsWith('#')) {
+    value = value.substring(1); // name of tag
+    const tags = tagList?.split('|');
+    if (tags && tags.length > 0) {
+      return tags.some(tag => tag.toLowerCase().includes(value));
+    }
+  }
+  return false;
 }

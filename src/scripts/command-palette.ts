@@ -8,7 +8,7 @@ import store from './internals/store';
  * first item, and focusing on the command palette input.
  * @returns void
  */
-export const openCommandPalette = (): void => {
+export function openCommandPalette(): void {
   const {container, commandPalette, input} = getElements();
   renderItems();
   setCurrentItem(0);
@@ -23,27 +23,27 @@ export const openCommandPalette = (): void => {
   });
 
   input.focus();
-};
+}
 
 /**
  * Closes the command palette by hiding it.
  * @returns void
  */
-export const closeCommandPalette = (): void => {
+export function closeCommandPalette(): void {
   const {container, input} = getElements();
   setTimeout(() => container.setAttribute('data-visible', 'false'), 150);
   container.style.display = 'none';
   store.setCurrentRoute('');
   input.value = '';
-};
+}
 
 /**
  * Hides the command palette without clearing the input value or
  * dispatching a search.
  * @returns void
  */
-export const hideCommandPalette = (): void => {
+export function hideCommandPalette(): void {
   const {container} = getElements();
   setTimeout(() => container.setAttribute('data-visible', 'false'), 150);
   container.style.display = 'none';
-};
+}
