@@ -1,8 +1,10 @@
-import {store, getElements, setCurrentItem} from '.';
 import type {CommandPaletteItem, CommandPalettePage} from '../../types';
 import {closeCommandPalette} from '../command-palette';
+import {getElements} from './elements';
+import {setCurrentItem} from './list';
+import store from './store';
 
-export const renderItems = () => {
+export function renderItems() {
   const defaultPlaceholder = store.getDefaultPlaceholder();
   const {listToAttach, input} = getElements();
   const current = store.getCurrentRoute();
@@ -23,22 +25,22 @@ export const renderItems = () => {
     if (defaultPlaceholder !== '') input.placeholder = defaultPlaceholder;
   }
 
-  itemsToRender.forEach(item => {
+  for (const item of itemsToRender) {
     const component = createCommandPaletteItem(item);
     listToAttach.append(component);
     dispatchItemEvent(item);
-  });
+  }
 
   setCurrentItem(0);
-};
+}
 
-const dispatchItemEvent = (item: CommandPaletteItem) => {
+function dispatchItemEvent(item: CommandPaletteItem) {
   const element = document.querySelector(
     `command-palette-item[data-items-uid="${item.id}"]`
   );
   if (!(element instanceof HTMLElement)) {
     console.error(
-      "astro-command-palette: The item can't be event dispatched because is undefined"
+      "astro-command-palette: The item can't be event dispatched because it is undefined"
     );
     return;
   }
@@ -61,12 +63,12 @@ const dispatchItemEvent = (item: CommandPaletteItem) => {
 
   if (item.url)
     element.addEventListener('click', () => {
-      window.open(item.url, '_blank', 'noopener nofollow');
+      window.open(item.url, '_self');
       closeCommandPalette();
     });
-};
+}
 
-const createCommandPaletteItem = (item: CommandPaletteItem) => {
+function createCommandPaletteItem(item: CommandPaletteItem) {
   const component = document.createElement('command-palette-item');
 
   component.setAttribute('data-selected', (item.selected ?? false).toString());
@@ -87,5 +89,9 @@ const createCommandPaletteItem = (item: CommandPaletteItem) => {
   span.appendChild(text);
   component.appendChild(span);
 
+  if (item.tags && item.tags.length > 0) {
+    component.dataset.tags = item.tags.join('|');
+  }
+
   return component;
-};
+}

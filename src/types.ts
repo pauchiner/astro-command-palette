@@ -1,20 +1,21 @@
-type CommandPaletteItemType = 'action' | 'page';
+export type CommandPaletteItemType = 'action' | 'page';
 
-type CommandPaletteBaseItem = {
+export type CommandPaletteBaseItem = {
   id: string;
   name: string;
+  tags?: string[];
   icon?: string;
   selected?: boolean;
   type: CommandPaletteItemType;
 };
 
-type CommandPaletteButtonAction = CommandPaletteBaseItem & {
+export type CommandPaletteButtonAction = CommandPaletteBaseItem & {
   type: 'action';
   url?: never;
   handler: () => void;
 };
 
-type CommandPaletteLinkAction = CommandPaletteBaseItem & {
+export type CommandPaletteLinkAction = CommandPaletteBaseItem & {
   type: 'action';
   url: string;
   handler?: never;

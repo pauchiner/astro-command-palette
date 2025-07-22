@@ -3,16 +3,12 @@ import {
   closeCommandPalette,
   hideCommandPalette
 } from './command-palette';
-import {
-  store,
-  incrementItem,
-  dispatchAction,
-  decrementItem,
-  getElements,
-  renderItems
-} from './internals';
+import {getElements} from './internals/elements';
+import {incrementItem, decrementItem, dispatchAction} from './internals/list';
+import {renderItems} from './internals/render';
+import store from './internals/store';
 
-const handleKeystrokes = (event: KeyboardEvent) => {
+function handleKeystrokes(event: KeyboardEvent) {
   /*
    * The main shortcut to open a close the command palette.
    * @returns if the keybinding is pressed
@@ -45,21 +41,33 @@ const handleKeystrokes = (event: KeyboardEvent) => {
   const upPressed =
     event.key === 'ArrowUp' || (event.shiftKey && event.key === 'Tab');
 
+  const pageUpPressed = event.key === 'PageUp';
+  const pageDownPressed = event.key === 'PageDown';
+
   return {
     commandPressed,
     escapePressed,
     enterPressed,
     downPressed,
-    upPressed
+    upPressed,
+    pageUpPressed,
+    pageDownPressed
   };
-};
+}
 
-export const handleKeyboard = (event: KeyboardEvent) => {
+export function handleKeyboard(event: KeyboardEvent) {
   const current = store.getCurrentRoute();
 
-  const { commandPalette, input, isVisible } = getElements();
-  const { commandPressed, escapePressed, enterPressed, downPressed, upPressed } =
-    handleKeystrokes(event);
+  const {commandPalette, input, isVisible} = getElements();
+  const {
+    commandPressed,
+    escapePressed,
+    enterPressed,
+    downPressed,
+    upPressed,
+    pageDownPressed,
+    pageUpPressed
+  } = handleKeystrokes(event);
 
   if (!isVisible && commandPressed) openCommandPalette();
   if (isVisible && commandPressed) hideCommandPalette();
@@ -69,14 +77,7 @@ export const handleKeyboard = (event: KeyboardEvent) => {
       store.setCurrentRoute('');
       input.value = '';
       renderItems();
-
-      // Pressed Animation
-      commandPalette.style.animationName = 'none';
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          commandPalette.style.animationName = '';
-        }, 0);
-      });
+      resetAnimation();
       return;
     }
     closeCommandPalette();
@@ -91,17 +92,27 @@ export const handleKeyboard = (event: KeyboardEvent) => {
       event.preventDefault();
       decrementItem();
     }
+    if (pageUpPressed) {
+      event.preventDefault();
+      decrementItem(10);
+    }
+    if (pageDownPressed) {
+      event.preventDefault();
+      incrementItem(10);
+    }
     if (enterPressed) {
       event.preventDefault();
       dispatchAction();
-
-      // Pressed Animation
-      commandPalette.style.animationName = 'none';
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          commandPalette.style.animationName = '';
-        }, 0);
-      });
+      resetAnimation();
     }
   }
-};
+
+  function resetAnimation() {
+    commandPalette.style.animationName = 'none';
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        commandPalette.style.animationName = '';
+      }, 0);
+    });
+  }
+}

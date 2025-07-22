@@ -27,18 +27,17 @@ export const getElements = (mockWindow: any = window) => {
     ...container.querySelectorAll('command-palette-item')
   ] as HTMLElement[];
 
-  const getItemsVisible = () => {
-    return items.filter((item: any) => {
-      return current.getComputedStyle(item).display === 'flex';
-    });
-  };
+  const getItemsVisible = () =>
+    items.filter(
+      (item: any) => current.getComputedStyle(item).display === 'flex'
+    );
 
   const input = container.querySelector(
     'command-palette-header input'
   ) as HTMLInputElement;
 
   const isVisible =
-    container.getAttribute('data-visible') === 'true' ? true : false;
+    container.getAttribute('data-visible') === 'true';
 
   return {
     getItemsVisible,

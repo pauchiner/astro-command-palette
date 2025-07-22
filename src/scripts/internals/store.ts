@@ -7,8 +7,9 @@ interface State {
   items: Array<CommandPaletteItem>;
 }
 
+let _defaultInstance: Store;
+
 class Store {
-  private static instance: Store;
   private state: State;
 
   private readonly initialState: State = {
@@ -22,28 +23,24 @@ class Store {
     this.state = this.initialState;
   }
 
-  public static getInstance(): Store {
-    if (!Store.instance) {
-      Store.instance = new Store();
+  public static get instance(): Store {
+    if (!_defaultInstance) {
+      _defaultInstance = new Store();
     }
-    return Store.instance;
+    return _defaultInstance;
   }
 
   public setItems = (items: Array<CommandPaletteItem>) => {
     this.state.items = items;
   };
 
-  public getItems = () => {
-    return this.state.items;
-  };
+  public getItems = () => this.state.items;
 
   public setCurrentRoute = (route: string) => {
     this.state.currentRoute = route;
   };
 
-  public getCurrentRoute = () => {
-    return this.state.currentRoute;
-  };
+  public getCurrentRoute = () => this.state.currentRoute;
 
   public setCurrentItem = (current: number | null) => {
     this.state.currentItem = current;
@@ -62,6 +59,6 @@ class Store {
   };
 }
 
-export const defaultStore = Store.getInstance();
+export const defaultStore = Store.instance;
 
 export default defaultStore;
